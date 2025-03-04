@@ -94,14 +94,14 @@ def load_main():
 def process_name(name: str):
     alphaonly_name = remove_nonalpha_chars(name)
     stripped_name = process_name_case_and_keep_alpha_chars(alphaonly_name)
-    return generate_welcome_message(stripped_name, False)
+    return render_template('index.html', welcome_msg=generate_welcome_message(stripped_name, False))
 
 
 @app.route("/emoji/<name>")
 def process_name_emoji(name: str):
     alphaonly_name = remove_nonalpha_chars(name)
     stripped_name = process_name_case_and_keep_alpha_chars(alphaonly_name)
-    return generate_welcome_message(stripped_name, True)
+    return render_template('index.html', welcome_msg=generate_welcome_message(stripped_name, True))
 
 
 if __name__ == "__main__":
