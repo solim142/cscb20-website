@@ -33,6 +33,7 @@ def process_name_case_and_keep_alpha_chars(name: str) -> str:
         stripped_name = stripped_name.capitalize()
     
     return stripped_name
+
 '''
 Takes in a string name, and processes the cases of each character.
 Prior to processing, strip both sides of name to remove whitespaces.
