@@ -1,0 +1,1 @@
+As a user, I want to toggle dark mode on the website by clicking the light/dark mode button so that I can read in low-light environments
