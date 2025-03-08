@@ -1,0 +1,1 @@
+As an instructor or TA, I should be able to post basic contact information so that students can contact me directly through email or in person, along with my availability.

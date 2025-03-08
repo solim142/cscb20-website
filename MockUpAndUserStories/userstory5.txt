@@ -1,0 +1,1 @@
+As a student, I should be able to see the name and contact information about the instructors, TAs and anyone involved so that I can know who to contact whenever I have a problem through email.

@@ -1,0 +1,1 @@
+As a student, I should be able to see the general information about the Assignments in one page, so that can have an overall view about all the assignments.
