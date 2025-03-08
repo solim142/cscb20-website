@@ -1,0 +1,1 @@
+As a student, I should be able to quickly access the individual assignments, so that I can quickly check on the content and not take too much time going through multiple pages.
