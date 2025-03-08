@@ -1,0 +1,1 @@
+As a student, I should be able to see all the information about the assignment in one page so that I can do everything I need to and not having to jump between pages to find all the information to do the assignment.
