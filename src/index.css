@@ -34,8 +34,8 @@ h3 {
 h4 {
     font-weight: bold;
     color: var(--UofTBlue);
-    font-size: 16px;
     padding-bottom: 4px;
+    margin-bottom: 0px;
 }
 
 p {
