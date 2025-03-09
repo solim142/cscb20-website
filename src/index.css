@@ -12,15 +12,14 @@ body {
 
 
 /* Below is the CSS code just for the navbar */
-
+/* For PC/landscape tablet: */
 .navbar {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    align-content: flex-start;
     background-color: var(--navbarLightBlue);
     margin: 0;
-    padding: 0;
+    padding: 5px;
     position: sticky; /* From: https://www.geeksforgeeks.org/how-to-make-a-div-stick-to-the-top-of-the-screen/ */
 }
 
@@ -30,21 +29,23 @@ body {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
 }
 
 .navbar a:hover, #currentPage {
     background-color: var(--UofTBlue);
     color: white;
-    border-radius: 8%;
+    border-radius: 10px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: var(--navbarLightBlue);
-    z-index: 1; 
+    z-index: 1;
+    margin: auto;
 }
   
 .dropdown a, .dropdown-content a {
@@ -56,6 +57,7 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     display: block;
+    margin: auto;
 }
   
 .dropdown-content a:hover {
@@ -65,4 +67,50 @@ body {
   
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* For phone */
+
+.navbarMobile {
+    display: none;
+    width: 100%;
+    background-color: var(--navbarLightBlue);
+    margin: 0;
+    padding: 5px;
+    position: sticky;
+}
+
+.navbarMobile p {
+    color: var(--UofTBlue);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+}
+
+.navbarMobile div {
+    flex-direction: row;
+}
+
+.navbarMobileLeft {
+    flex-grow: 1;
+}
+
+.navbarMobileRight {
+    flex-grow: 5;
+}
+
+/* To switch between PC and phone based on the aspect ratio, since phones are vertical and PC are horizontal. */
+
+@media (max-aspect-ratio: 1/1) {
+    .navbar {
+        display: none;
+    }
+
+    .navbarMobile {
+        display: flex;
+    }
 }
