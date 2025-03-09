@@ -73,44 +73,63 @@ body {
 
 .navbarMobile {
     display: none;
-    width: 100%;
-    background-color: var(--navbarLightBlue);
-    margin: 0;
-    padding: 5px;
-    position: sticky;
 }
 
-.navbarMobile p {
-    color: var(--UofTBlue);
-    text-decoration: none;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: auto;
-}
 
-.navbarMobile div {
-    flex-direction: row;
-}
-
-.navbarMobileLeft {
-    flex-grow: 1;
-}
-
-.navbarMobileRight {
-    flex-grow: 5;
-}
-
-/* To switch between PC and phone based on the aspect ratio, since phones are vertical and PC are horizontal. */
-
-@media (max-aspect-ratio: 1/1) {
+/* To switch between PC and phone based on the aspect ratio, since phones are vertical and PC are horizontal, and smallest screensize is 1080p nowadays */
+@media (max-aspect-ratio: 1/1) or (max-width: 1080px) {
     .navbar {
         display: none;
     }
 
     .navbarMobile {
-        display: flex;
+        display: grid;
+        width: 100%;
+        background-color: var(--navbarLightBlue);
+        margin: 0;
+        padding: 5px;
+        position: sticky;
+        grid-template-columns: 60px auto;
+        grid-template-rows: 60px auto;
+    }
+    
+    .navbarMobileLeft {
+        color: var(--UofTBlue);
+        text-decoration: none;
+        text-align: center;
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+
+    .navbarMobileRight {
+        color: var(--UofTBlue);
+        text-decoration: none;
+        text-align: center;
+        grid-column-start: 2;
+        grid-row-start: 1;
+        font-size: 20px;
+    }
+
+    .navbarMobileMenu {
+        display: none;
+        width: 100%;
+    }
+
+    .navbarMobileMenu a {
+        color: var(--UofTBlue);
+        text-decoration: none;
+        text-align: left;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        width: fit-content;
+    }
+    
+    .navbarMobile:hover .navbarMobileMenu {
+        display: grid;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
     }
 }
