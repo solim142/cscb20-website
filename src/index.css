@@ -47,18 +47,7 @@ body {
     z-index: 1; 
 }
   
-.dropdown a {
-    color: var(--UofTBlue);
-    text-decoration: none;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    display: block;
-}
-
-.dropdown-content a {
+.dropdown a, .dropdown-content a {
     color: var(--UofTBlue);
     text-decoration: none;
     text-align: center;
