@@ -1,0 +1,79 @@
+/* Using :root to create the default colours for light mode */
+:root {
+    --UofTBlue: #1E3765;
+    --UofTLightBlue: #007FA3;
+    --navbarLightBlue: #B2D8E3;
+    --UofTGreen: #00A189;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* Below is the CSS code just for the navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-content: flex-start;
+    background-color: var(--navbarLightBlue);
+    margin: 0;
+    padding: 0;
+    position: sticky; /* From: https://www.geeksforgeeks.org/how-to-make-a-div-stick-to-the-top-of-the-screen/ */
+}
+
+.navbar a {
+    color: var(--UofTBlue);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.navbar a:hover, #currentPage {
+    background-color: var(--UofTBlue);
+    color: white;
+    border-radius: 8%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--navbarLightBlue);
+    z-index: 1; 
+}
+  
+.dropdown a {
+    color: var(--UofTBlue);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: block;
+}
+
+.dropdown-content a {
+    color: var(--UofTBlue);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: block;
+}
+  
+.dropdown-content a:hover {
+    background-color: var(--UofTBlue);
+    color: white;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
