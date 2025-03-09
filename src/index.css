@@ -83,7 +83,7 @@ a:hover {
 
 .navbar a:hover, #currentPage {
     background-color: var(--UofTBlue);
-    color: white;
+    color: var(--background);
     border-radius: 10px;
 }
 
@@ -109,7 +109,7 @@ a:hover {
   
 .dropdown-content a:hover {
     background-color: var(--UofTBlue);
-    color: white;
+    color: var(--background);
 }
   
 .dropdown:hover .dropdown-content {
