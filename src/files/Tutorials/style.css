@@ -1,0 +1,79 @@
+* {
+    font-family: Comic Sans MS;
+}
+
+body {
+    background-color: khaki;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+    color: darkorange;
+}
+
+p {
+    font-size: 16px;
+}
+
+img {
+    float: left;
+    margin-right: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.card {
+    background-color: burlywood;
+    border-radius: 5px;
+    padding: 30px;
+    height: auto;
+    overflow: auto;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.divider {
+    border-bottom: 3px dotted burlywood;
+}
+
+.lifetime {
+    font-family: Snell Roundhand, cursive;
+    text-align: center;
+    font-size: 32px;
+}
+
+.form-element {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    padding: 7px 12px 7px 12px;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn {
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-color: #555;
+    padding: 10px 16px;
+}
+.btn:hover {
+    background-color: #666;
+}
+.btn-group {
+    text-align: center;
+}
