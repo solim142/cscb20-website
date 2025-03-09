@@ -4,6 +4,7 @@
     --UofTLightBlue: #007FA3;
     --navbarLightBlue: #B2D8E3;
     --UofTGreen: #00A189;
+    --background: white;
 }
 
 /* Default CSS for all pages */
@@ -46,7 +47,15 @@ p {
     color: var(--UofTLightBlue);
     padding-bottom: 4px;
 }
- 
+
+a:hover {
+    font-size: 18px;
+}
+
+.content {
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
 /* Below is the CSS code just for the navbar */
 /* For PC/landscape tablet: */
@@ -58,6 +67,7 @@ p {
     margin: 0;
     padding: 5px;
     position: sticky; /* From: https://www.geeksforgeeks.org/how-to-make-a-div-stick-to-the-top-of-the-screen/ */
+    top: 0;
 }
 
 .navbar a {
@@ -126,6 +136,7 @@ p {
         margin: 0;
         padding: 5px;
         position: sticky;
+        top: 0;
         grid-template-columns: 60px auto;
         grid-template-rows: 60px auto;
     }
@@ -173,11 +184,6 @@ p {
 
 /* Below is the CSS code just for the Home page */
 
-.content{
-    padding-left: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .line{
     border: 1.5px solid var(--UofTGreen);
     width: 98%;
@@ -203,6 +209,52 @@ p {
     flex-grow: 1;
 }
 
-a:hover {
-    font-size: 18px;
+
+/* Feedback CSS  */
+
+.feedback_submission {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#feedback_text {
+    width: 100%;
+    padding: 20px;
+    resize: vertical;
+    box-sizing: border-box;
+    color: lightgray;
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    box-shadow: 2px 2px 2px gray;
+    font-size: 16px;
+}
+
+.feedback_btns {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.feedback_submit {
+    background-color: var(--UofTBlue);
+    color: var(--background);
+    border-radius: 5px;
+    padding: 5px 15px; /* top/bottom left/right */
+    margin: 10px;
+}
+
+.feedback_cancel {
+    background-color: var(--background);
+    color: var(--UofTBlue);
+    border-radius: 5px;
+    padding: 5px 15px; /* top/bottom left/right */
+    margin: 10px;
+}
+
+.feedback_submit:hover, 
+.feedback_cancel:hover {
+    font-size: 16px;
 }
