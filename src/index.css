@@ -254,6 +254,11 @@ a:hover {
     margin: 10px;
 }
 
+.feedback_submit:hover, 
+.feedback_cancel:hover {
+    font-size: 16px;
+}
+
 /* Below is the CSS code just for the Assignments page */
 
 .assignments-grid-container{
@@ -287,10 +292,4 @@ a:hover {
 
 .underline{
     text-decoration: underline;
-}
-
-
-.feedback_submit:hover, 
-.feedback_cancel:hover {
-    font-size: 16px;
 }
