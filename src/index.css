@@ -158,28 +158,34 @@ h1{
     height: 0px;
 }
 
-#heading2{
+#heading2 {
     color:var(--UofTBlue);
 }
 
-.contact{
+.contact {
     display: flex;
     flex-wrap: wrap;
     row-gap: 15px;
     column-gap: 2em;
     padding-top:20px;
     padding-bottom:20px; 
+    align-items: center;
 }
 
-#image{
+.contact .text {
+    flex-grow: 1;
+}
+
+#image {
     text-align: center;
+    flex-grow: 1;
 }
 
 a:hover {
     font-size: 18px;
   }
 
-#heading4{
+#heading4 {
    font-weight:bold;
    color: var(--UofTBlue);
    font-size: 16px;
