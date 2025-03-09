@@ -49,7 +49,7 @@ p {
     padding-bottom: 4px;
 }
 
-a:hover {
+a:hover:not(.footerLink) {
     font-size: 18px;
 }
 
@@ -345,4 +345,46 @@ a:hover {
     font-size: 16px;
     white-space: nowrap;
 }
-/* **************** */
+
+/* CSS For the Footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: auto;
+    background-color: var(--UofTBlue);
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerLink {
+    color: #FFFF;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.footerLogo {
+    height: auto;
+    width: 100px;
+}
+
+.DarkmodeButton {
+    border-radius: 5px;
+    background-color: var(--UofTLightBlue);
+    box-shadow: 0px 0px 5px black;
+    border-style: none;
+    transition: 0.3s;
+}
+
+.DarkmodeButton:hover {
+    box-shadow: 0px 0px 10px black;
+}
