@@ -86,23 +86,28 @@ def is_palindrome(word: str) -> bool:
     return True
 
 #===Flask Routing Functions===
-@app.route("/")
+
+#Load the website by default
+@app.route("/") 
 def load_main():
     return render_template("index.html")
 
 
 @app.route("/<name>")
 def process_name(name: str):
+    if name == '':
+        return "Enter a name after the first slash in the url or emoji/(your name) in the url."
+    
     alphaonly_name = remove_nonalpha_chars(name)
     stripped_name = process_name_case_and_keep_alpha_chars(alphaonly_name)
-    return render_template('index.html', welcome_msg=generate_welcome_message(stripped_name, False))
+    return f"<h1>{generate_welcome_message(stripped_name, False)}</h1>"
 
 
 @app.route("/emoji/<name>")
 def process_name_emoji(name: str):
     alphaonly_name = remove_nonalpha_chars(name)
     stripped_name = process_name_case_and_keep_alpha_chars(alphaonly_name)
-    return render_template('index.html', welcome_msg=generate_welcome_message(stripped_name, True))
+    return f"<h1>{generate_welcome_message(stripped_name, True)}</h1>"
 
 
 if __name__ == "__main__":
