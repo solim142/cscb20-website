@@ -5,6 +5,7 @@
     --navbarLightBlue: #B2D8E3;
     --UofTGreen: #00A189;
     --background: white;
+    --text: black;
 }
 
 /* Default CSS for all pages */
@@ -55,6 +56,16 @@ a:hover {
 .content {
     padding-left: 30px;
     padding-right: 30px;
+}
+
+.textCodeHighlight {
+    font-size: 12px;
+    background-color: #F5F5F5;
+    color: #E0061F;
+    border-radius: 5px;
+    padding: 4px;
+    font-family: sans-serif;
+    border: 1px solid #C7CDD1;
 }
 
 /* Below is the CSS code just for the navbar */
@@ -223,7 +234,7 @@ a:hover {
     padding: 20px;
     resize: vertical;
     box-sizing: border-box;
-    color: lightgray;
+    color: var(--text);
     border-radius: 10px;
     border: 2px solid lightgray;
     box-shadow: 2px 2px 2px gray;
@@ -292,4 +303,10 @@ a:hover {
 
 .underline{
     text-decoration: underline;
+}
+
+.A1img {
+    width: 760px;
+    max-width: 100%;
+    margin: 10px;
 }
