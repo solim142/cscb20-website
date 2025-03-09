@@ -133,3 +133,55 @@ body {
         grid-row-start: 2;
     }
 }
+
+/* Below is the CSS code just for the Home page */
+h1{
+    text-align: center;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: var(--UofTBlue);
+}
+
+.content{
+    padding-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#heading{
+    text-align: left;
+    font-weight: bolder;
+    color: var(--UofTLightBlue);
+}
+.line{
+    border: 1.5px solid var(--UofTGreen);
+    width: 98%;
+    height: 0px;
+}
+
+#heading2{
+    color:var(--UofTBlue);
+}
+
+.contact{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 2em;
+    padding-top:20px;
+    padding-bottom:20px; 
+}
+
+#image{
+    text-align: center;
+}
+
+a:hover {
+    font-size: 18px;
+  }
+
+#heading4{
+   font-weight:bold;
+   color: var(--UofTBlue);
+   font-size: 16px;
+   padding-bottom: 4px;
+}
