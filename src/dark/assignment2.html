@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSCB20H3</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="dark_index.css">
 </head>
 <body>
     
@@ -13,7 +13,7 @@
         <a href="index.html">Home</a>
         <a href="syllabus.html">Syllabus</a>
         <div class="dropdown">
-            <a href="assignments.html">Assignments</a>
+            <a href="assignments.html" id="currentPage">Assignments</a>
             <div class="dropdown-content"> <!-- Using adaptation from https://www.w3schools.com/css/css_dropdowns.asp -->
                 <a href="assignment1.html">Assignment 1</a>
                 <a href="assignment2.html">Assignment 2</a>
@@ -25,7 +25,7 @@
         <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
         <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
         <a href="feedback.html">Feedback</a>
-        <a href="team.html" id="currentPage">Course Team</a>
+        <a href="team.html">Course Team</a>
     </div>
 
     <!-- Menu only for "mobile" aspect ratios -->
@@ -33,7 +33,7 @@
 
         <img src="files/Hamburger_icon_lightmode.png" alt="menu" width="50px" height="50px">
         <div class="navbarMobileRight">
-            <p><b>Course Team</b></p>
+            <p><b>Assignment 2</b></p>
         </div>
 
         <div class="navbarMobileMenu">
@@ -50,59 +50,29 @@
 
     </div>
 
-    <h1>Team</h1>
-    <div class="teamList">
-        <div class="teamListItem">
-            <img src="files/prof_pic.jpg" style="max-height: 128px; max-width: 128px; width: auto; height: auto;"/>
-            <div>
-                <h2>Purva Gawde</h2>
-                <p>Email: <a href="mailto:purva.gawde@utoronto.ca">purva.gawde@utoronto.ca</a></p>
-                <p>Office: IA4056</p>
-                <p>Role: Course Instructor</p>
-            </div>
-        </div>
-        <div class="teamListItem">
-            <img src="files/Face_Placeholder.png" style="height: 128px; width: 128px;"/>
-            <div>
-                <h2>Naghmeh Safaie</h2>
-                <p>LinkedIn: <a href="www.linkedin.com/in/naghmeh-safaie-3962b183">www.linkedin.com/in/naghmeh-safaie-3962b183</a></p>
-                <p>Role: Teaching Assistant</p>
-            </div>
-        </div>
-        <div class="teamListItem">
-            <img src="files/Face_Placeholder.png" style="height: 128px; width: 128px;"/>
-            <div>
-                <h2>Orhan Cangurel</h2>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/orhan-cangurel/">https://www.linkedin.com/in/orhan-cangurel/</a></p>
-                <p>Role: Teaching Assistant</p>
-            </div>
-        </div>
-        <div class="teamListItem">
-            <img src="files/Face_Placeholder.png" style="height: 128px; width: 128px;"/>
-            <div>
-                <h2>Vincent Zhang</h2>
-                <p>Linkedin: <a href="https://www.linkedin.com/in/vincentzhang15/">https://www.linkedin.com/in/vincentzhang15/</a></p>
-                <p>Role: Teaching Assistant</p>
-            </div>
-        </div>
-        <div class="teamListItem">
-            <img src="files/Face_Placeholder.png" style="height: 128px; width: 128px;"/>
-            <div>
-                <h2>Kevin Zhang</h2>
-                <p>Role: Teaching Assistant</p>
-            </div>
-        </div>
+    <div class="content">
+        <h1>Assignment 2</h1>
+        <div class="line"></div>
+
+        <p><span class="boldBlue">Unlocks:</span> March 1 at 11:59 PM</p>
+        <p><span class="boldBlue">Due:</span> March 12 at 11:59 PM</p>
+        <p><span class="boldBlue">Weight:</span> 10%</p>
+        <p><span class="boldBlue">Comments: </span></p>
+
+        <div class="line"></div>
+        
+        <p style="height: 60vh;"></p>
     </div>
 
     <footer>
-        <img class="footerLogo" src="files/utsc_logo.jpg"/>
+        <img class="footerLogo" src="files/utsc_logo_dark.png"/>
         <div class="footerLinks">
             <p>IMPORTANT LINKS</p>
             <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
             <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
             <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
         </div>
-        <a class="DarkmodeButton" href="dark/team.html" style="text-align: center;"> Turn <b>ON</b><br> Dark Mode</a>
+        <a class="DarkmodeButton" href="../assignment2.html" style="text-align: center;"> Turn <b>OFF</b><br> Dark Mode</a>
     </footer>
 </body>
 </html>

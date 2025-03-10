@@ -404,3 +404,32 @@ footer {
 .DarkmodeButton:hover {
     box-shadow: 0px 0px 10px black;
 }
+
+/* Teams Page */
+.teamList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.teamListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--navbarLightBlue);
+    box-shadow: 0px 0px 10px black;
+}
+
+.teamListItem div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.teamListItem div p, .teamListItem div h2 {
+    margin: 1px;
+}
