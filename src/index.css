@@ -196,6 +196,22 @@ a:hover:not(.footerLink) {
         grid-column-end: 2;
         grid-row-start: 2;
     }
+
+    .footerLogo {
+        height: auto;
+        width: 75px;
+    }
+
+    .footerLink {
+        color: #FFFF;
+        text-decoration: underline;
+        font-size: 8px;
+    }
+    
+    .footerLinks p {
+        font-size: 8px; 
+        color: var(--footertext);
+    }
 }
 
 /* Below is the CSS code just for the Home page */
@@ -358,8 +374,10 @@ a:hover:not(.footerLink) {
 /* CSS For the Footer */
 
 footer {
-    bottom: 0;
-    width: 100%;
+    position: relative;
+    padding: 5px;
+    margin-right: 0;
+    width: 100vw;
     height: 100px;
     background-color: var(--UofTBlue);
     display: flex;
@@ -396,6 +414,8 @@ footer {
     padding: 5px;
     background-color: var(--UofTLightBlue);
     box-shadow: 0px 0px 5px black;
+    
+    font-size: 12px;
     border-style: none;
     transition: 0.3s;
     text-decoration: none;
@@ -405,4 +425,32 @@ footer {
 
 .DarkmodeButton:hover {
     box-shadow: 0px 0px 10px black;
+}
+
+.teamList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.teamListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--navbarLightBlue);
+    box-shadow: 0px 0px 10px black;
+}
+
+.teamListItem div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.teamListItem div p, .teamListItem div h2 {
+    margin: 1px;
 }
