@@ -92,8 +92,8 @@ a:hover:not(.footerLink) {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin: 0%;
 }
 
@@ -377,7 +377,6 @@ footer {
     position: relative;
     padding: 5px;
     margin-right: 0;
-    width: 100vw;
     height: 100px;
     background-color: var(--UofTBlue);
     display: flex;
