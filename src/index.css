@@ -12,8 +12,9 @@
 /* Default CSS for all pages */
 
 body {
-    margin: 0;
+    margin: auto;
     font-family: Arial, Helvetica, sans-serif;
+    min-height: auto;
 }
 
 h1 {
@@ -76,9 +77,11 @@ a:hover:not(.footerLink) {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    max-width: 100%;
     background-color: var(--navbarLightBlue);
     margin: 0;
-    padding: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     position: sticky; /* From: https://www.geeksforgeeks.org/how-to-make-a-div-stick-to-the-top-of-the-screen/ */
     top: 0;
 }
@@ -89,9 +92,9 @@ a:hover:not(.footerLink) {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: auto;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin: 0%;
 }
 
 .navbar a:hover, #currentPage {
@@ -199,7 +202,7 @@ a:hover:not(.footerLink) {
 
 .line{
     border: 1.5px solid var(--UofTGreen);
-    width: 98%;
+    width: 95%;
     height: 0px;
 }
 
@@ -226,15 +229,21 @@ a:hover:not(.footerLink) {
 /* Feedback CSS  */
 
 .feedback_submission {
-    width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+}
+
+.feedback_submission h3 {
+    text-align: center;
+    flex: 1;
 }
 
 #feedback_text {
     width: 100%;
     padding: 20px;
     resize: vertical;
+    height: 60vh;
     box-sizing: border-box;
     color: var(--text);
     border-radius: 10px;
@@ -247,7 +256,6 @@ a:hover:not(.footerLink) {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    margin: 5px;
     font-weight: bold;
 }
 
@@ -351,12 +359,12 @@ a:hover:not(.footerLink) {
 
 footer {
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     height: 100px;
     background-color: var(--UofTBlue);
     display: flex;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     margin: 0px;
 }
 
