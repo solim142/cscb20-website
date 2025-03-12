@@ -455,3 +455,120 @@ footer {
 .teamListItem div p, .teamListItem div h2 {
     margin: 1px;
 }
+
+/*Calendar page CSS*/
+.schedule {
+    display: grid;
+    grid-template-columns: 100px repeat(5, 1fr); /* First column for time, rest for days */
+    grid-template-rows: minmax(50px, auto); /* First row for headers, rest for time slots */
+    overflow-x: auto;            /* Allows horizontal scroll if the screen is too narrow */
+    min-width: 600px;           /* The schedule won't shrink below 600px; triggers scroll on narrower screens */
+    max-width: 800px;
+    margin: auto;
+    gap: 5px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.day, .time {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background: #1E3765;
+    color: white;
+    border-radius: 5px;
+}
+
+.time {
+    background: #737b8c;
+}
+
+.slot {
+    background: #e0e0e0;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.busy {
+    background: #007FA3;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative; /* Ensures the location is positioned relative to the event */
+    overflow: hidden;   /* Prevents content overflow */
+    transition: all 0.3s ease-in-out;
+}
+
+.lecture {
+    grid-row: span 2; /* Spanning 2 rows for 9-11 AM lecture */
+}
+
+.doubleSlot {
+    display: grid;
+    grid-template-rows: 1fr; /* Splits the cell into two equal rows */
+    gap: 5px;
+    padding: 5px;
+}
+
+.location {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+
+    /* Align content in center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Reveal on hover */
+.busy:hover .location {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================================
+   -- Calendar Small Screen --
+   ================================== */
+@media (max-width: 600px) {
+    /* Let the page content shrink vertically */
+
+    /* Reduce min-width so the table can be narrower on small screens 
+       but keep horizontal scroll to preserve the layout. */
+    .schedule {
+        min-width: 500px;  /* so it triggers horizontal scroll if screen < 500px */
+        padding: 10px; 
+        gap: 3px;
+    }
+
+    /* Optionally adjust font sizes, paddings for better fit */
+    .day, .time {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    .slot, .busy {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    .location {
+        font-size: 16px;
+    }
+}
