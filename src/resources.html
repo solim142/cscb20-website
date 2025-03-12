@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSCB20H3</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Created a navbar that should hopefully stick to the top of page and can reuse, so feel free to copy-paste -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="syllabus.html">Syllabus</a>
+        <div class="dropdown">
+            <a href="files/Week 0 Lecture Notes-1.pdf">Lecture Content</a>
+            <div class="dropdown-content">
+                <a href="files/Week 0 Lecture Notes-1.pdf">Lecture Notes</a>
+                <a href="">News</a>
+                
+                <a href="resources.html" id="currentPage">Resources</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="assignments.html">Assignments</a>
+            <div class="dropdown-content"> <!-- Using adaptation from https://www.w3schools.com/css/css_dropdowns.asp -->
+                <a href="assignment1.html">Assignment 1</a>
+                <a href="assignment2.html">Assignment 2</a>
+                <a href="assignment3.html">Assignment 3</a> <!-- Assignment 3 not posted, so can't add link. -->
+            </div>
+        </div>
+        <a href="labs.html">Labs</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="">Tests</a>
+        <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
+        <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
+        <div class="dropdown">
+            <a href="team.html">Course Team</a>
+            <div class="dropdown-content">
+                <a href="feedback.html">Feedback</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu only for "mobile" aspect ratios -->
+    <div class="navbarMobile">
+
+        <img src="files/Hamburger_icon_lightmode.png" alt="menu" width="50px" height="50px">
+        <div class="navbarMobileRight">
+            <p><b>Home</b></p>
+        </div>
+
+        <div class="navbarMobileMenu">
+            <a href="index.html"><b>Home</b></a>
+            <a href="syllabus.html"><b>Syllabus</b></a>
+            <a href="assignments.html"><b>Assignments</b></a>
+            <a href="labs.html"><b>Labs</b></a>
+            <a href="files/Week 0 Lecture Notes-1.pdf"><b>Lecture Notes</b></a>
+            <a href="">News</a>
+            <a href="resources.html" >Resources</a>
+            <a href="https://piazza.com/class/m5fmz9kzjo83yk"><b>Piazza</b></a>
+            <a href="https://markus2.utsc.utoronto.ca/"><b>MarkUs</b></a>
+            <a href="feedback.html"><b>Feedback</b></a>
+            <a href="team.html"><b>Course Team</b></a>
+            <a href="calendar.html">Calendar</a>
+            <a href="">Tests</a>
+        </div>
+
+    </div>
+
+    <h1>Resources</h1>
+    <div class="content" style="height: 70vh;">
+        <h2>Online Resources</h2>
+        <ul>
+            <li><a href="index.html">Course website</a>: Course information, lecture notes, tutorial material, important announcements, etc. will be posted on the course website. It is your responsibility to visit it frequently.</li>
+            <li><b>Beginner tutorial for SQL: </b><a href="http://code.tutsplus.com/tutorials/sql-for-beginners--net-8200">link</a>.</li>
+            <li><b>Email communication: </b>Questions regarding the course material, assignments, midterm, etc. should be posed on the bulletin board. Questions about the assignment which you feel you cannot formulate without revealing your solution (should be very rare!), as well as questions and concerns regarding your personal matters should be directed to the instructor.</li>
+            <li><a href="https://piazza.com/class/m5fmz9kzjo83yk">Discussion board</a>:You are encouraged to use the bulletin board to discuss the course material, pose questions on the assignments, etc. The bulletin board will be monitored by the instructor and by your TAs. Please, be very careful not to reveal (parts of) your solution on the bulletin board.</li>
+            <li><a href="https://q.utoronto.ca/courses/372797/external_tools/2181">Library Resources</a></li>
+        </ul>
+        <p></p>
+
+        <div class="line"></div>
+    </div>
+
+    <footer>
+        <img class="footerLogo" src="files/utsc_logo.jpg"/>
+        <div class="footerLinks">
+            <p>IMPORTANT LINKS</p>
+            <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
+            <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
+            <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
+        </div>
+        <a class="DarkmodeButton" href="dark/index.html" style="text-align: center;"> Turn <b>ON</b><br> Dark Mode</a>
+    </footer>
+</body>
+</html>
