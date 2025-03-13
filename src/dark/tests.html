@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSCB20H3</title>
+    <link rel="stylesheet" href="dark_index.css">
+</head>
+<body>
+    
+    <!-- Created a navbar that should hopefully stick to the top of page and can reuse, so feel free to copy-paste -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="syllabus.html">Syllabus</a>
+        <div class="dropdown">
+            <a href="assignments.html">Assignments</a>
+            <div class="dropdown-content"> <!-- Using adaptation from https://www.w3schools.com/css/css_dropdowns.asp -->
+                <a href="assignment1.html">Assignment 1</a>
+                <a href="assignment2.html">Assignment 2</a>
+                <a href="assignment3.html">Assignment 3</a> <!-- Assignment 3 not posted, so can't add link. -->
+            </div>
+        </div>
+        <a href="labs.html">Labs</a>
+        <a href="files/Week 0 Lecture Notes-1.pdf">Lecture Notes</a>
+        <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
+        <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="team.html">Course Team</a>
+    </div>
+
+    <!-- Menu only for "mobile" aspect ratios -->
+    <div class="navbarMobile">
+
+        <img src="files/Hamburger_icon_lightmode.png" alt="menu" width="50px" height="50px">
+        <div class="navbarMobileRight">
+            <p><b>Assignments</b></p>
+        </div>
+
+        <div class="navbarMobileMenu">
+            <a href="index.html"><b>Home</b></a>
+            <a href="syllabus.html"><b>Syllabus</b></a>
+            <a href="assignments.html"><b>Assignments</b></a>
+            <a href="labs.html"><b>Labs</b></a>
+            <a href="files/Week 0 Lecture Notes-1.pdf"><b>Lecture Notes</b></a>
+            <a href="https://piazza.com/class/m5fmz9kzjo83yk"><b>Piazza</b></a>
+            <a href="https://markus2.utsc.utoronto.ca/"><b>MarkUs</b></a>
+            <a href="feedback.html"><b>Feedback</b></a>
+            <a href="team.html"><b>Course Team</b></a>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <h2>Overview</h2>
+        <p>Here are the term tests dates and times. The registrar's office has released the Winter 2025
+            <a href="https://www.utsc.utoronto.ca/registrar/examination-schedule">Exam Schedule</a>
+        </p>
+        <div class="line"></div>
+        
+        <h2>Test Schedule</h2>
+        <div class='assignments-grid-container'>
+            
+            <div class="header-item"> <span class="boldBlue">Test</span></div>
+            <div class="header-item"> <span class="boldBlue">Date</span></div>
+            <div class="header-item"> <span class="boldBlue">Time</span></div>
+            <div class="header-item"> <span class="boldBlue">Location</span></div>
+
+            <div class="header-line"></div>
+            
+            <div class="item5">Midterm</a></div>
+            <div class="item6">February 28</div>
+            <div class="item7">9-11 AM</div>
+            <div class="item8">HL 170</div>
+
+            <div class="item9">Final Exam</a></div>
+            <div class="item10">April 23</div>
+            <div class="item11">2-5 PM</div>
+            <div class="unavailable">Not available</div>
+            
+            
+        </div>
+        <div class="line"></div>
+        
+        <h2>Term Test Information</h2>
+        <h3>Term Test Coverage</h3>
+        <ul>
+            <li class="assign-list-item">Course Lecture material</li>
+            <li class="assign-list-item">Concepts rehearsed in lecture with worksheets</li>
+            <li class="assign-list-item">Weekly tutorials</li>
+            <li class="assign-list-item">Assignment 1</li>
+        </ul>
+
+        <h3>Study Advice</h3>
+        <p>The term test is designed to reflect the work you've done in lectures, tutorials, and assignments. Regular class attendance and diligent work on assignments are key ways to prepare, as these activities reinforce your learning.</p>
+        <ol>
+            <li><h4>Practice Writing Queries by Hand</h4>
+                <ul class="highlight-list">
+                    <li class="study-info">You'll be required to write queries on paper without the support of an SQL editor or IDE.</li>
+                    <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
+                    <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable identifying issues without automatic error highlighting.</li>
+                </ul>
+            </li>
+            <li><h4>Review Course Notes and Examples</h4>
+                <ul class="highlight-list">
+                    <li class="study-info">You'll be required to write queries on paper without the support of an SQL editor or IDE.</li>
+                    <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
+                    <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable identifying issues without automatic error highlighting.</li>
+                </ul>
+            </li>
+        </ol>
+        
+    </div>
+
+    <footer>
+        <img class="footerLogo" src="files/utsc_logo_dark.png"/>
+        <div class="footerLinks">
+            <p>IMPORTANT LINKS</p>
+            <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
+            <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
+            <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
+        </div>
+        <a class="DarkmodeButton" href="../tests.html" style="text-align: center;"> Turn <b>ON</b><br> Dark Mode</a>
+    </footer>
+</body>
+</html>
