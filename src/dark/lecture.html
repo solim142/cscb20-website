@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSCB20H3</title>
+    <link rel="stylesheet" href="dark_index.css">
+</head>
+<body>
+    
+    <!-- Created a navbar that should hopefully stick to the top of page and can reuse, so feel free to copy-paste -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="syllabus.html">Syllabus</a>
+        <div class="dropdown">
+            <a href="assignments.html">Assignments</a>
+            <div class="dropdown-content"> <!-- Using adaptation from https://www.w3schools.com/css/css_dropdowns.asp -->
+                <a href="assignment1.html">Assignment 1</a>
+                <a href="assignment2.html">Assignment 2</a>
+                <a href="assignment3.html">Assignment 3</a> <!-- Assignment 3 not posted, so can't add link. -->
+            </div>
+        </div>
+        <a href="labs.html" id="currentPage">Labs</a>
+        <a href="files/Week 0 Lecture Notes-1.pdf">Lecture Notes</a>
+        <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
+        <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="team.html">Course Team</a>
+    </div>
+
+    <!-- Menu only for "mobile" aspect ratios -->
+    <div class="navbarMobile">
+
+        <img src="files/Hamburger_icon_lightmode.png" alt="menu" width="50px" height="50px">
+        <div class="navbarMobileRight">
+            <p><b>Tutorials</b></p>
+        </div>
+
+        <div class="navbarMobileMenu">
+            <a href="index.html"><b>Home</b></a>
+            <a href="syllabus.html"><b>Syllabus</b></a>
+            <a href="assignments.html"><b>Assignments</b></a>
+            <a href="labs.html"><b>Labs</b></a>
+            <a href="files/Week 0 Lecture Notes-1.pdf"><b>Lecture Notes</b></a>
+            <a href="https://piazza.com/class/m5fmz9kzjo83yk"><b>Piazza</b></a>
+            <a href="https://markus2.utsc.utoronto.ca/"><b>MarkUs</b></a>
+            <a href="feedback.html"><b>Feedback</b></a>
+            <a href="team.html"><b>Course Team</b></a>
+        </div>
+
+    </div>
+    <div class="content">
+        <h2>Overview</h2>
+        <p>Here you will find all lecture information and resources to reinforce key concepts through hands-on practice and guided exercises.
+        </p>
+        <div class="line"></div>
+
+        <h2>Lecture Materials</h2>
+        <p>Lecture notes and readings will be posted four days before class to allow you time for preparation..</p>
+        <div class='assignments-grid-container'>
+            
+            <div class="header-item"> <span class="boldBlue">Week</span></div>
+            <div class="header-item"> <span class="boldBlue">Topic</span></div>
+            <div class="header-item"> <span class="boldBlue">Notes</span></div>
+            <div class="header-item"> <span class="boldBlue">Readings</span></div>
+
+            <div class="header-line"></div>
+            
+            <div>Week 0</div>
+            <div>Introduction - Databases, Relational Model</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 0</a></div>
+            <div>No readings</a></div>
+            
+            <div>Week 1</div>
+            <div>Introduction - Databases, Relational Model</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 1</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 1</a></div>
+            
+            <div>Week 2</div>
+            <div>Relational Algebra Queries and SQL Query Language</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 2</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 2</a></div>
+            
+            <div>Week 3</div>
+            <div>SQL Query Language</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 3</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 3</a></div>
+
+            <div>Week 4</div>
+            <div>SQL and Introduction to web development</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 4</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 4</a></div>
+            
+            <div>Week 5</div>
+            <div>Introduction to HTML and CSS</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 5</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 5</a></div>
+
+            <div>Week 6</div>
+            <div>HTML, CSS, Box Model</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 6</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 6</a></div>
+
+            <div>Week 7</div>
+            <div>Introduction to Flask, Flexbox and Media Queries</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 7</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 7</a></div>
+
+            <div>Week 8</div>
+            <div>Flask and Introduction to JavaScript</div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Lecture 8</a></div>
+            <div><a href="files/Week 0 Lecture Notes-1.pdf">Reading 8</a></div>
+
+            <div class="unavailable">Week 9</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+
+            <div class="unavailable">Week 10</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+
+            <div class="unavailable">Week 11</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+            <div class="unavailable">Not available</div>
+            
+        </div>
+
+    </div>
+
+    <footer>
+        <img class="footerLogo" src="files/utsc_logo_dark.png"/>
+        <div class="footerLinks">
+            <p>IMPORTANT LINKS</p>
+            <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
+            <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
+            <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
+        </div>
+        <a class="DarkmodeButton" href="../lecture.html" style="text-align: center;"> Turn <b>ON</b><br> Dark Mode</a>
+    </footer>
+</body>
+</html>
