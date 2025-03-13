@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSCB20H3</title>
+    <link rel="stylesheet" href="dark_index.css">
+</head>
+<body>
+    
+    <!-- Created a navbar that should hopefully stick to the top of page and can reuse, so feel free to copy-paste -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="syllabus.html">Syllabus</a>
+        <div class="dropdown">
+            <a href="assignments.html">Assignments</a>
+            <div class="dropdown-content"> <!-- Using adaptation from https://www.w3schools.com/css/css_dropdowns.asp -->
+                <a href="assignment1.html">Assignment 1</a>
+                <a href="assignment2.html">Assignment 2</a>
+                <a href="assignment3.html">Assignment 3</a> <!-- Assignment 3 not posted, so can't add link. -->
+            </div>
+        </div>
+        <a href="labs.html">Labs</a>
+        <a href="files/Week 0 Lecture Notes-1.pdf">Lecture Notes</a>
+        <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
+        <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="team.html">Course Team</a>
+        <!-- <a href="calendar.html" id="currentPage">Calendar</a>****add when ready-->
+    </div>
+
+    <!-- Menu only for "mobile" aspect ratios -->
+    <div class="navbarMobile">
+
+        <img src="files/Hamburger_icon_darkmode.png" alt="menu" width="50px" height="50px">
+        <div class="navbarMobileRight">
+            <p><b>Tutorials</b></p>
+        </div>
+
+        <div class="navbarMobileMenu">
+            <a href="index.html"><b>Home</b></a>
+            <a href="syllabus.html"><b>Syllabus</b></a>
+            <a href="assignments.html"><b>Assignments</b></a>
+            <a href="labs.html"><b>Labs</b></a>
+            <a href="files/Week 0 Lecture Notes-1.pdf"><b>Lecture Notes</b></a>
+            <a href="https://piazza.com/class/m5fmz9kzjo83yk"><b>Piazza</b></a>
+            <a href="https://markus2.utsc.utoronto.ca/"><b>MarkUs</b></a>
+            <a href="feedback.html"><b>Feedback</b></a>
+            <a href="team.html"><b>Course Team</b></a>
+        </div>
+
+    </div>
+    <div class="content">
+        <h2>Course Calendar</h2>
+        <p>Here you will find a typical weekly schedule for CSCB20. Hover over class times for the location.
+        </p>
+        <div class="line"></div>
+        <div class="schedule">
+            <!-- Header Row -->
+            <div class="day header"></div>
+            <div class="day header">Monday</div>
+            <div class="day header">Tuesday</div>
+            <div class="day header">Wednesday</div>
+            <div class="day header">Thursday</div>
+            <div class="day header">Friday</div>
+        
+            <!-- 8 AM Row -->
+            <div class="time">8 AM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        
+            <!-- 9 AM Row -->
+            <div class="time">9 AM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="busy lecture">
+              <div class="busy-inner">Lecture <br> 9-11 AM
+                <div class="location">SW 319</div>
+              </div>
+              </div>
+        
+            <!-- 10 AM Row -->
+            <div class="time">10 AM</div>
+            <!-- 9–11 AM lecture above spans 2 rows-->
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        
+            <!-- 11 AM Row -->
+            <div class="time">11 AM</div>
+            <div class="busy">
+              Purva OH <br> 11-12 PM
+              <div class="location">IA 4056</div>
+            </div>
+            <div class="slot"></div>
+            <div class="busy">
+              TUT0002 <br> 11-12 PM
+              <div class="location">IA 3012</div>
+            </div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        
+            <!-- 12 PM Row -->
+            <div class="time">12 PM</div>
+            <div class="busy">
+              TUT0001 <br> 12-1 PM
+              <div class="location">IA 3012</div>
+            </div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        
+            <!-- 1 PM Row -->
+            <div class="time">1 PM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="busy">
+              TUT0006 <br> 1-2 PM
+              <div class="location">IA 3012</div>
+            </div>
+        
+            <!-- 2 PM Row -->
+            <div class="time">2 PM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="busy doubleSlot">
+              TUT0003 <br> TA OH <br> 2-3 PM
+              <div class="location">
+                TUT: IA3012 <br> TA OH: IA3180
+              </div>
+            </div>
+            <div class="slot"></div>
+            <div class="busy">
+              TA OH <br> 2-3 PM
+              <div class="location">IA 3180</div>
+            </div>
+        
+            <!-- 3 PM Row -->
+            <div class="time">3 PM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="busy">
+              TA OH <br> 3-4 PM
+              <div class="location">IA 3180</div>
+            </div>
+            <div class="slot"></div>
+        
+            <!-- 4 PM Row -->
+            <div class="time">4 PM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        
+            <!-- 5 PM Row -->
+            <div class="time">5 PM</div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+          </div>
+
+    </div>
+
+    <footer>
+        <img class="footerLogo" src="files/utsc_logo_dark.png"/>
+        <div class="footerLinks">
+            <p>IMPORTANT LINKS</p>
+            <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
+            <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
+            <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
+        </div>
+        <a class="DarkmodeButton" href="../calendar.html" style="text-align: center;"> Turn <b>OFF</b><br> Dark Mode</a>
+    </footer>
+</body>
+</html>
