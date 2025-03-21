@@ -1,1 +1,0 @@
-As a student, I should be able to see the summary of the assignments in one page so that I can quickly know what day it is due, how much is it worth, and any notes the instructors add.

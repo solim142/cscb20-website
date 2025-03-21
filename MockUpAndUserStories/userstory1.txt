@@ -1,2 +1,0 @@
-As a student, I want to click on the 'Feedback' link in the navigation menu, which takes me to a feedback form where I can type my message and submit it without logging in, so that I can share my thoughts anonymously.
-

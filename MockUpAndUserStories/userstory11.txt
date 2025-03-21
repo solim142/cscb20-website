@@ -1,1 +1,0 @@
-As a student, I should able to view the Syllabus for the course to know all the basic information regarding the course structure, getting help, accommodations and more.

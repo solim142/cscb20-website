@@ -90,7 +90,7 @@ def is_palindrome(word: str) -> bool:
 #Load the website by default
 @app.route("/") 
 def load_main():
-    return render_template("index.html")
+    return render_template("assignments.html")
 
 
 @app.route("/<name>")

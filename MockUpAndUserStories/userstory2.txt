@@ -1,1 +1,0 @@
-As a student, I should be able to see the general information about the course in the 'Home' page so that I, as a first-time user, can see the basics.
