@@ -13,8 +13,7 @@ Figma: https://www.figma.com/design/kkPU0R4oBZhoBAiaJWRGHf/Untitled?node-id=0-1&
     - Assignment 1
     - Assignment 2
     - Assignment 3
-- Grades
-    - Need to log in to see grades
+- Grades (Need to log in to see grades)
     - (Student) Grades + Remark requests
     - (Instructor) See & edit all student grades
     - (Instructor) See remark requests
@@ -24,6 +23,8 @@ Figma: https://www.figma.com/design/kkPU0R4oBZhoBAiaJWRGHf/Untitled?node-id=0-1&
     - (Student) Anonymous Feedback
     - (Instructor) See Feedback
     - Team
+- MarkUs
+- Piazza
 - Profile
     - Log in (only shows when not logged in)
         - "No account? Register"

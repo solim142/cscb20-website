@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    
+    <!-- The navbar -->
+    <div class="navbar" id="mainNav">
+        <a href="#">Home</a>
+        <a href="#">Syllabus</a>
+        <a href="#">News</a>
+        <div class="sub-navbar">
+            <button class="sub-navbar-btn">Lectures</button>
+            <div class="sub-nabvar-content">
+                <a href="#">Lecture Notes</a>
+                <a href="#">Tests</a>
+                <a href="#">Calendar</a>
+            </div>
+        </div>
+        <a href="#">Labs</a>
+        <div class="sub-navbar">
+            <button class="sub-navbar-btn">Assignments</button>
+            <div class="sub-nabvar-content">
+                <a href="#">Assignments</a>
+                <a href="#">Assignment 1</a>
+                <a href="#">Assignment 2</a>
+                <a href="#">Assignment 3</a>
+                <a href="#">MarkUs</a>
+            </div>
+        </div>
+        <a href="#">Grades</a>
+        <a href="#">Piazza</a>
+        <div class="sub-navbar">
+            <button class="sub-navbar-btn">Extras</button>
+            <div class="sub-nabvar-content">
+                <a href="#">Feedback</a>
+                <a href="#">Resources</a>
+                <a href="#">Team</a>
+            </div>
+        </div>
+        <a href="#">Profile</a>
+        <a href="javascript:void(0);" class="icon" onclick="switchResponsive()">≡</a>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+
+    <footer>
+        <img class="footerLogo" src="{{ url_for('static', filename='images/utsc_logo.png') }}"/>
+        <div class="footerLinks">
+            <p>IMPORTANT LINKS</p>
+            <a href="https://www.utsc.utoronto.ca/cms/computer-science" class="footerLink">UTSC Computer Science Faculty</a>
+            <a href="https://jobs.utoronto.ca" class="footerLink">Careers @UofT</a>
+            <p>Site designed by Daniel Weihs Sarabia, Lucas Soliman, and Tahira Tasneem</p>
+        </div>
+        <a class="DarkmodeButton" href="dark/index.html" style="text-align: center;"> Turn <b>ON</b><br> Dark Mode</a>
+    </footer>
+</body>
+</html>

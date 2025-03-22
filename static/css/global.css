@@ -1,0 +1,236 @@
+/* Using :root to create the default colours for light mode */
+:root {
+    --UofTBlue: #1E3765;
+    --UofTLightBlue: #007FA3;
+    --navbarLightBlue: #B2D8E3;
+    --UofTGreen: #00A189;
+    --background: white;
+    --text: black;
+    --footertext: #96A1B7;
+}
+
+/* Default CSS for all pages */
+
+body {
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: auto;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 32px;
+    color: var(--UofTBlue);
+}
+
+h2 {
+    color:var(--UofTBlue);
+}
+
+h3 {
+    text-align: left;
+    font-weight: bolder;
+    color: var(--UofTLightBlue);
+}
+
+h4 {
+    font-weight: bold;
+    color: var(--UofTBlue);
+    padding-bottom: 4px;
+    margin-bottom: 0px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.boldBlue {
+    font-weight: bold;
+    color: var(--UofTLightBlue);
+    padding-bottom: 4px;
+}
+
+a:hover:not(.footerLink) {
+    font-size: 18px;
+    transition-duration: 0.25s;
+}
+
+.content {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.textCodeHighlight {
+    font-size: 12px;
+    background-color: #F5F5F5;
+    color: #E0061F;
+    border-radius: 5px;
+    padding: 4px;
+    font-family: sans-serif;
+    border: 1px solid #C7CDD1;
+}
+
+
+
+/* Navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px; 
+    text-decoration: none;
+}
+
+.sub-navbar {
+    float: left;
+    overflow: hidden;
+}
+
+.sub-navbar .sub-navbar-btn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .sub-navbar:hover .sub-navbar-btn {
+    background-color: red;
+}
+
+.sub-nabvar-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    width: 100%;
+    z-index: 1;
+}
+
+.sub-nabvar-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+}
+
+.sub-nabvar-content a:hover {
+    background-color: #eee;
+    color: black;
+}
+
+.sub-navbar:hover .sub-nabvar-content {
+    display: block;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+@media (max-aspect-ratio: 1/1) or (width <= 1080px) {
+    .navbar a {display: none;}
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+    .navbar.responsive {position: relative;}
+    .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .sub-navbar-btn {
+        display: none
+    }
+}
+
+
+/* CSS For the Footer */
+
+footer {
+    position: relative;
+    padding: 5px;
+    margin-right: 0;
+    height: 100px;
+    background-color: var(--UofTBlue);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerLink {
+    color: #FFFF;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.footerLinks p {
+    font-size: 12px; 
+    color: var(--footertext);
+}
+
+.footerLogo {
+    height: auto;
+    width: 100px;
+}
+
+.DarkmodeButton {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--UofTLightBlue);
+    box-shadow: 0px 0px 5px black;
+    
+    font-size: 12px;
+    border-style: none;
+    transition: 0.3s;
+    text-decoration: none;
+    color: var(--navbarLightBlue);
+    padding: 10px;
+}
+
+.DarkmodeButton:hover {
+    box-shadow: 0px 0px 10px black;
+}
+
+@media (max-aspect-ratio: 1/1) or (max-width: 1080px) {
+
+    .footerLogo {
+        height: auto;
+        width: 75px;
+    }
+
+    .footerLink {
+        color: #FFFF;
+        text-decoration: underline;
+        font-size: 8px;
+    }
+    
+    .footerLinks p {
+        font-size: 8px; 
+        color: var(--footertext);
+    }
+}
