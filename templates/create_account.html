@@ -1,0 +1,17 @@
+{% include ".Head.html" %}
+<html>
+    <form action="{{ url_for('register_account') }}" method="POST" id="register_form">
+        <label for="register_username">Username</label>
+        <input id="register_username" name="username" class="form_input" type="text">
+        <label for="register_password">Password</label>
+        <input id="register_password" name="password" class="form_input" type="password">
+        <input id="register_confirm_password" name="confirm_password" class="form_input" type="password">
+        <select id="register_usertype" name="usertype">
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+        </select>
+        <button type="submit">Create Account</button>
+    </form>
+    <a href="{{ url_for('register_account') }}">create account</a>
+</html>
+{% include ".Footer.html" %}
