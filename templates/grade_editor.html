@@ -1,0 +1,36 @@
+{% extends ".Page.html" %}
+<body>
+    <form action="{{ url_for('get_grades') }}" method="POST">
+        <label for="student_username_input">Student: </label>
+        <input id="student_username_input" type="text" name="student_username">
+        <button type="submit">search student</button>
+    </form>
+
+    <form action="{{ url_for('add_grades') }}" method="POST">
+        <label for="student_username_input">Student: </label>
+        <input id="student_username_input" type="text" name="student_username">
+        <select id="student_assignment_selector" name="assignment">
+            <option value="Assignment 1">Assignment 1</option>
+            <option value="Assignment 2">Assignment 2</option>
+            <option value="Assignment 3">Assignment 3</option>
+            <option value="Midterm">Midterm</option>
+        </select>
+
+        <label for="student_grade_input">Grade: </label>
+        <input id="student_grade_input" name="grade" type="number">
+        <button type="submit">search student</button>
+    </form>
+
+    {% if student_data %}
+        {% for student in student_data %}
+        <!-- student[0] is the username, student[1] is the assignment, student[2] is the corresponding grade-->
+            <div>
+                <p>{{ student[0] }}</p>
+                <p>{{ student[1] }}</p>
+                <p>{{ student[2] }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+    <p>Enter a student username above to view their grades.</p>
+    {% endif %}
+</body>
