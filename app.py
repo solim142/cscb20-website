@@ -144,7 +144,9 @@ def get_grades():
     
     return render_template('grade_editor.html', student_data=grades_query._allrows())
 
-
+#######################
+#GRADE HANDLING SYSTEM#
+#######################
 @app.route('/grades/set', methods=('POST', 'GET'))
 def set_grade():
     student_to_update = request.form['student_username']
@@ -153,9 +155,11 @@ def set_grade():
     if not app_session[IS_LOGGED_IN]:
         return redirect(url_for('home'))
 
-    if app_session[USER_TYPE] != 'Teacher':
+    if app_session[ACCOUNT_TYPE] != 'Teacher':
         return redirect(url_for('home'))
     
+    if request.method == 'GET':
+        return render_template('grade_editor.html')
     # Query the student to see if their grade already exists
     # if it exists, update that row with UPDATE_GRADE_QUERY
     # if row does not exist add in row with ADD_GRADE_QUERY
