@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% include ".Head.html" %}
-<body>
-    {% include ".Navbar.html" %}
+{% extends ".template.html" %}
+{% block content %}
     <h1>Team</h1>
     <div class="teamList">
         <div class="teamListItem">
@@ -47,5 +44,4 @@
         </div>
     </div>
     {% include ".Footer.html" %}
-</body>
-</html>
+{% endblock content %}

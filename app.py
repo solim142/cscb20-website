@@ -10,6 +10,14 @@ IS_LOGGED_IN = 'logged_in'
 SESSION_NAME = 'session_name'
 ACCOUNT_TYPE = 'account_type'
 
+#  EASY RENDER WITH SESSION
+def basic_render(html: str):
+    if not app_session.get(IS_LOGGED_IN):
+        return redirect(url_for('login_account'))
+    else:
+        print(f"{app_session.get(SESSION_NAME)} is already logged in, sending to home page...")
+        return render_template(html)
+
 # QUERY FUNCTIONS
 def ADD_NEW_USER_QUERY(new_username: str, new_password: str, new_acctype: str):
     return insert(Accounts).values(
@@ -26,7 +34,7 @@ def GET_USER_BY_NAME_QUERY(username: str):
 
 # INITIALIZE APP AND BCRYPT
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '12438324'
+app.config['SECRET_KEY'] = 'cbad71fb55b1579ecd6c34133dcab059692c1a00891e186313251fb9537d2f20'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///assignment3.db'
 bcrypt = Bcrypt(app)
 
@@ -61,14 +69,64 @@ with app.app_context():
 ###########################
 #ROUTING ENDPOINT HANDLING#
 ###########################
+
 @app.route("/")
 @app.route("/home")
 def home():
-    if not app_session.get(IS_LOGGED_IN):
-        return redirect(url_for('login_account'))
-    
-    print(f"{app_session.get(SESSION_NAME)} is already logged in, sending to home page...")
-    return render_template("index.html")
+    return basic_render("index.html")
+
+@app.route("/syllabus")
+def syllabus():
+    return basic_render("syllabus.html")
+
+@app.route("/news")
+def news():
+    return basic_render("news.html")
+
+# Temporary
+@app.route("/lecture")
+def lecture():
+    return basic_render("lecture.html")
+
+@app.route("/tests")
+def tests():
+    return basic_render("tests.html")
+
+@app.route("/calendar")
+def calendar():
+    return basic_render("calendar.html")
+
+@app.route("/tutorials")
+def tutorials():
+    return basic_render("labs.html")
+
+@app.route("/assignments")
+def assignments():
+    return basic_render("assignments.html")
+
+@app.route("/assignment1")
+def assignment1():
+    return basic_render("assignment1.html")
+
+@app.route("/assignment2")
+def assignment2():
+    return basic_render("assignment2.html")
+
+@app.route("/assignment3")
+def assignment3():
+    return basic_render("assignment3.html")
+
+@app.route("/feedback")
+def feedback():
+    return basic_render("feedback.html")
+
+@app.route("/resources")
+def resources():
+    return basic_render("resources.html")
+
+@app.route("/team")
+def team():
+    return basic_render("team.html")
 
 
 @app.route("/register", methods=('POST', 'GET'))
@@ -127,7 +185,7 @@ def login_account():
 
 @app.route('/grades')
 @app.route('/grades/get', methods=('POST', 'GET'))
-def get_grades():
+def grades():
     if request.method == 'GET':
         return render_template('grade_editor.html')
     
@@ -147,6 +205,7 @@ def get_grades():
 #######################
 #GRADE HANDLING SYSTEM#
 #######################
+
 @app.route('/grades/set', methods=('POST', 'GET'))
 def set_grade():
     student_to_update = request.form['student_username']

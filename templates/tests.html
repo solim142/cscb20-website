@@ -1,79 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-
-{% include ".Head.html" %}
-
-<body>
-    {% include ".Navbar.html" %}
-    <div class="content">
-        <h2>Overview</h2>
-        <p>Here are the term tests dates and times. The registrar's office has released the Winter 2025
-            <a href="https://www.utsc.utoronto.ca/registrar/examination-schedule">Exam Schedule</a>
-        </p>
-        <div class="line"></div>
-
-        <h2>Test Schedule</h2>
-        <div class='assignments-grid-container'>
-
-            <div class="header-item"> <span class="boldBlue">Test</span></div>
-            <div class="header-item"> <span class="boldBlue">Date</span></div>
-            <div class="header-item"> <span class="boldBlue">Time</span></div>
-            <div class="header-item"> <span class="boldBlue">Location</span></div>
-
-            <div class="header-line"></div>
-
-            <div class="item5">Midterm</a></div>
-            <div class="item6">February 28</div>
-            <div class="item7">9-11 AM</div>
-            <div class="item8">HL 170</div>
-
-            <div class="item9">Final Exam</a></div>
-            <div class="item10">April 23</div>
-            <div class="item11">2-5 PM</div>
-            <div class="unavailable">Not available</div>
-
-
-        </div>
-        <div class="line"></div>
-
-        <h2>Term Test Information</h2>
-        <h3>Term Test Coverage</h3>
-        <ul>
-            <li class="assign-list-item">Course Lecture material</li>
-            <li class="assign-list-item">Concepts rehearsed in lecture with worksheets</li>
-            <li class="assign-list-item">Weekly tutorials</li>
-            <li class="assign-list-item">Assignment 1</li>
-        </ul>
-
-        <h3>Study Advice</h3>
-        <p>The term test is designed to reflect the work you've done in lectures, tutorials, and assignments. Regular
-            class attendance and diligent work on assignments are key ways to prepare, as these activities reinforce
-            your learning.</p>
-        <ol>
-            <li>
-                <h4>Practice Writing Queries by Hand</h4>
-                <ul class="highlight-list">
-                    <li class="study-info">You'll be required to write queries on paper without the support of an SQL
-                        editor or IDE.</li>
-                    <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
-                    <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable
-                        identifying issues without automatic error highlighting.</li>
-                </ul>
-            </li>
-            <li>
-                <h4>Review Course Notes and Examples</h4>
-                <ul class="highlight-list">
-                    <li class="study-info">You'll be required to write queries on paper without the support of an SQL
-                        editor or IDE.</li>
-                    <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
-                    <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable
-                        identifying issues without automatic error highlighting.</li>
-                </ul>
-            </li>
-        </ol>
-
+{% extends ".template.html" %}
+{% block content %}
+    <h2>Overview</h2>
+    <p>Here are the term tests dates and times. The registrar's office has released the Winter 2025
+        <a href="https://www.utsc.utoronto.ca/registrar/examination-schedule">Exam Schedule</a>
+    </p>
+    <div class="line"></div>
+    <h2>Test Schedule</h2>
+    <div class='assignments-grid-container'>
+        <div class="header-item"> <span class="boldBlue">Test</span></div>
+        <div class="header-item"> <span class="boldBlue">Date</span></div>
+        <div class="header-item"> <span class="boldBlue">Time</span></div>
+        <div class="header-item"> <span class="boldBlue">Location</span></div>
+        <div class="header-line"></div>
+        <div class="item5">Midterm</a></div>
+        <div class="item6">February 28</div>
+        <div class="item7">9-11 AM</div>
+        <div class="item8">HL 170</div>
+        <div class="item9">Final Exam</a></div>
+        <div class="item10">April 23</div>
+        <div class="item11">2-5 PM</div>
+        <div class="unavailable">Not available</div>
     </div>
-    {% include ".Footer.html" %}
-</body>
-
-</html>
+    <div class="line"></div>
+    <h2>Term Test Information</h2>
+    <h3>Term Test Coverage</h3>
+    <ul>
+        <li class="assign-list-item">Course Lecture material</li>
+        <li class="assign-list-item">Concepts rehearsed in lecture with worksheets</li>
+        <li class="assign-list-item">Weekly tutorials</li>
+        <li class="assign-list-item">Assignment 1</li>
+    </ul>
+    <h3>Study Advice</h3>
+    <p>The term test is designed to reflect the work you've done in lectures, tutorials, and assignments. Regular
+        class attendance and diligent work on assignments are key ways to prepare, as these activities reinforce
+        your learning.</p>
+    <ol>
+        <li>
+            <h4>Practice Writing Queries by Hand</h4>
+            <ul class="highlight-list">
+                <li class="study-info">You'll be required to write queries on paper without the support of an SQL
+                    editor or IDE.</li>
+                <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
+                <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable
+                    identifying issues without automatic error highlighting.</li>
+            </ul>
+        </li>
+        <li>
+            <h4>Review Course Notes and Examples</h4>
+            <ul class="highlight-list">
+                <li class="study-info">You'll be required to write queries on paper without the support of an SQL
+                    editor or IDE.</li>
+                <li class="study-info">Practice writing queries for all the operators we studied so far.</li>
+                <li class="study-info">Check your queries carefully for syntax and logic errors. Get comfortable
+                    identifying issues without automatic error highlighting.</li>
+            </ul>
+        </li>
+    </ol>
+{% endblock content %}

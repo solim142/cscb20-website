@@ -15,6 +15,8 @@ body {
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
     min-height: auto;
+    background-color: var(--background);
+    color: var(--text);
 }
 
 h1 {
@@ -25,7 +27,7 @@ h1 {
 }
 
 h2 {
-    color:var(--UofTBlue);
+    color: var(--UofTBlue);
 }
 
 h3 {
@@ -71,131 +73,157 @@ a:hover:not(.footerLink) {
     border: 1px solid #C7CDD1;
 }
 
-/* Below is the CSS code just for the navbar */
-/* For PC/landscape tablet: */
+
+/* Navbar */
 .navbar {
+    overflow: hidden;
+    background-color: var(--navbarLightBlue);
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
-    max-width: 100%;
-    background-color: var(--navbarLightBlue);
-    margin: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    position: sticky; /* From: https://www.geeksforgeeks.org/how-to-make-a-div-stick-to-the-top-of-the-screen/ */
-    top: 0;
 }
 
 .navbar a {
+    float: left;
+    font-size: 16px;
     color: var(--UofTBlue);
-    text-decoration: none;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 0%;
+    padding: 14px 16px; 
+    text-decoration: none;
 }
 
-.navbar a:hover, #currentPage {
+.sub-navbar {
+    float: left;
+    overflow: hidden;
+}
+
+.sub-navbar .sub-navbar-btn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: var(--UofTBlue);
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:not(.icon):hover, .sub-navbar:hover .sub-navbar-btn {
     background-color: var(--UofTBlue);
     color: var(--background);
     border-radius: 10px;
 }
 
-.dropdown-content {
+.sub-nabvar-content {
     display: none;
     position: absolute;
+    left: 0;
     background-color: var(--navbarLightBlue);
+    width: 100%;
     z-index: 1;
-    margin: auto;
 }
-  
-.dropdown a, .dropdown-content a {
+
+.sub-nabvar-content a {
+    float: left;
     color: var(--UofTBlue);
     text-decoration: none;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    display: block;
-    margin: auto;
 }
-  
-.dropdown-content a:hover {
+
+.sub-nabvar-content a:hover {
     background-color: var(--UofTBlue);
     color: var(--background);
+    border-radius: 10px;
 }
-  
-.dropdown:hover .dropdown-content {
+
+.sub-navbar:hover .sub-nabvar-content {
     display: block;
 }
 
-/* For phone */
-
-.navbarMobile {
+.navbar .icon, .navbar .mobile {
     display: none;
 }
 
+@media (max-aspect-ratio: 1/1) or (width <= 1080px) {
+    .navbar a {display: none;}
 
-/* To switch between PC and phone based on the aspect ratio, since phones are vertical and PC are horizontal, and smallest screensize is 1080p nowadays */
-@media (max-aspect-ratio: 1/1) or (max-width: 1080px) {
-    .navbar {
-        display: none;
+    .navbar a.icon, .navbar .mobile {
+        float: right;
+        display: block;
     }
 
-    .navbarMobile {
-        display: grid;
-        width: 100%;
-        background-color: var(--navbarLightBlue);
-        margin: 0;
-        padding: 5px;
-        position: sticky;
+    .navbar.responsive {position: relative;}
+
+    .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
         top: 0;
-        grid-template-columns: 60px auto;
-        grid-template-rows: 60px auto;
-    }
-    
-    .navbarMobileLeft {
-        color: var(--UofTBlue);
-        text-decoration: none;
-        text-align: center;
-        grid-column-start: 1;
-        grid-row-start: 1;
     }
 
-    .navbarMobileRight {
-        color: var(--UofTBlue);
-        text-decoration: none;
-        text-align: center;
-        grid-column-start: 2;
-        grid-row-start: 1;
-        font-size: 20px;
-    }
-
-    .navbarMobileMenu {
-        display: none;
-        width: 100%;
-    }
-
-    .navbarMobileMenu a {
-        color: var(--UofTBlue);
-        text-decoration: none;
+    .navbar.responsive a {
+        float: none;
+        display: block;
         text-align: left;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 30px;
-        padding-right: 30px;
-        width: fit-content;
     }
+
+    .sub-navbar-btn {display: none}
+}
+
+
+/* CSS For the Footer */
+
+footer {
+    position: relative;
+    padding: 5px;
+    margin-right: 0;
+    height: 100px;
+    background-color: var(--UofTBlue);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerLink {
+    color: #FFFF;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.footerLinks p {
+    font-size: 12px; 
+    color: var(--footertext);
+}
+
+.footerLogo {
+    height: auto;
+    width: 100px;
+}
+
+.DarkmodeButton {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--UofTLightBlue);
+    box-shadow: 0px 0px 5px black;
     
-    .navbarMobile:hover .navbarMobileMenu {
-        display: grid;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 2;
-    }
+    font-size: 12px;
+    border-style: none;
+    transition: 0.3s;
+    text-decoration: none;
+    color: var(--navbarLightBlue);
+    padding: 10px;
+}
+
+.DarkmodeButton:hover {
+    box-shadow: 0px 0px 10px black;
+}
+
+@media (max-aspect-ratio: 1/1) or (max-width: 1080px) {
 
     .footerLogo {
         height: auto;

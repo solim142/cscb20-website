@@ -1,0 +1,15 @@
+{% extends ".template.html" %}
+{% block content %}
+    <h1>Anonymous Feedback</h1>
+
+    <div class="feedback_submission">
+        <h3>Your feedback is completely anonymous. Feel free to share your thoughts, concerns, or suggestions about the course. No personal information will be collected.</h3>
+        <form action="#" method="post">
+            <textarea id="feedback_text" name="feedback_text" placeholder="Add your comments..."></textarea>
+        </form>
+        <div class="feedback_btns">
+            <button class="feedback_cancel">CANCEL</button>
+            <button class="feedback_submit">SUBMIT</button>
+        </div>
+    </div>
+{% endblock content %}

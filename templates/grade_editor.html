@@ -1,5 +1,5 @@
-{% extends ".Page.html" %}
-<body>
+{% extends ".template.html" %}
+{% block content %}
     <form action="{{ url_for('get_grades') }}" method="POST">
         <label for="student_username_input">Student: </label>
         <input id="student_username_input" type="text" name="student_username">
@@ -33,4 +33,4 @@
     {% else %}
     <p>Enter a student username above to view their grades.</p>
     {% endif %}
-</body>
+{% endblock content %}

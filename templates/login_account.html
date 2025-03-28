@@ -1,23 +1,22 @@
-{% include ".Head.html" %}
-<header>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-</header>
-<body>
-    <form action="{{ url_for('login_account') }}" method="POST" id="login_form">
-        <label for="login_username">Username</label>
-        <input id="login_username" name="username" class="form_input" type="text">
-        <label for="login_password">Password</label>
-        <input id="login_password" name="password" class="form_input" type="password">
-        <button type="submit">Login</button>
-    </form>
-    <a href="{{ url_for('register_account') }}">Create new account</a>
-</body>
-{% include ".Footer.html" %}
+{% extends ".template.html" %}
+{% block content %}
+  <header>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  </header>
+      <form action="{{ url_for('login_account') }}" method="POST" id="login_form">
+          <label for="login_username">Username</label>
+          <input id="login_username" name="username" class="form_input" type="text">
+          <label for="login_password">Password</label>
+          <input id="login_password" name="password" class="form_input" type="password">
+          <button type="submit">Login</button>
+      </form>
+      <a href="{{ url_for('register_account') }}">Create new account</a>
+{% endblock content %}
