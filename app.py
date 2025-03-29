@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+import datetime
 
 # CONSTANTS
 IS_LOGGED_IN = 'logged_in'
