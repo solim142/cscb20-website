@@ -127,10 +127,6 @@ def assignment2():
 def assignment3():
     return basic_render("assignment3.html")
 
-@app.route("/feedback")
-def feedback():
-    return basic_render("feedback.html")
-
 @app.route("/resources")
 def resources():
     return basic_render("resources.html")
@@ -235,13 +231,15 @@ def set_grade():
     # if row does not exist add in row with ADD_GRADE_QUERY
 
 #feedback route
+#feedback route
 @app.route('/feedback', methods=['GET', 'POST'])
-def submit_feedback():
-    if not app_session.get(IS_LOGGED_IN) or app_session.get(ACCOUNT_TYPE) != 'student':
+def feedback():
+    if not app_session.get(IS_LOGGED_IN) or app_session.get(ACCOUNT_TYPE) != 'Student':
         flash('Only logged-in students can submit feedback.')
         return redirect(url_for('login_account'))
 
-    instructors = Accounts.query.filter_by(account_type='instructor').all()
+    instructors = Accounts.query.filter_by(account_type='Teacher').all()
+    print("Number of instructors available:", len(instructors))
 
     if request.method == 'POST':
         instructor_username = request.form['instructor_username']
@@ -260,7 +258,7 @@ def submit_feedback():
         db.session.add(feedback)
         db.session.commit()
         flash("Your feedback has been submitted successfully!")
-        return redirect(url_for('submit_feedback'))
+        return redirect(url_for('feedback'))
 
     return render_template('feedback.html', instructors=instructors)
 
