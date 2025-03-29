@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 # CONSTANTS
 IS_LOGGED_IN = 'logged_in'
@@ -61,6 +62,16 @@ class Grades(db.Model):
 
     def __repr__(self):
         return f"Grades({self.id}, '{self.username}', '{self.assignment}', {self.grade})"
+
+class Feedback(db.Model):
+    __tablename__ = "feedback"
+    id: Mapped[int] = mapped_column(primary_key=True, unique=True)
+    instructor_username: Mapped[str] = mapped_column(ForeignKey('accounts.username'))
+    teaching_likes: Mapped[str]
+    teaching_improvements: Mapped[str]
+    lab_likes: Mapped[str]
+    lab_improvements: Mapped[str]
+    timestamp: Mapped[datetime.datetime] = mapped_column(default=datetime.datetime.utcnow)
 
 
 with app.app_context():
@@ -223,6 +234,35 @@ def set_grade():
     # if it exists, update that row with UPDATE_GRADE_QUERY
     # if row does not exist add in row with ADD_GRADE_QUERY
 
+#feedback route
+@app.route('/feedback', methods=['GET', 'POST'])
+def submit_feedback():
+    if not app_session.get(IS_LOGGED_IN) or app_session.get(ACCOUNT_TYPE) != 'student':
+        flash('Only logged-in students can submit feedback.')
+        return redirect(url_for('login_account'))
+
+    instructors = Accounts.query.filter_by(account_type='instructor').all()
+
+    if request.method == 'POST':
+        instructor_username = request.form['instructor_username']
+        teaching_likes = request.form['teaching_likes']
+        teaching_improvements = request.form['teaching_improvements']
+        lab_likes = request.form['lab_likes']
+        lab_improvements = request.form['lab_improvements']
+
+        feedback = Feedback(
+            instructor_username=instructor_username,
+            teaching_likes=teaching_likes,
+            teaching_improvements=teaching_improvements,
+            lab_likes=lab_likes,
+            lab_improvements=lab_improvements
+        )
+        db.session.add(feedback)
+        db.session.commit()
+        flash("Your feedback has been submitted successfully!")
+        return redirect(url_for('submit_feedback'))
+
+    return render_template('feedback.html', instructors=instructors)
 
 if __name__ == '__main__':
     app.run(debug=True)
