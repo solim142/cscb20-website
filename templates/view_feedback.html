@@ -1,0 +1,67 @@
+{% extends ".template.html" %}
+{% block content %}
+
+<h2>Anonymous Feedback for You</h2>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash">
+      {% for msg in messages %}
+        <p>{{ msg }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- Filter Buttons -->
+<div class="toggle-btns">
+    <button class="filter-btn active" data-status="all">Show All</button>
+    <button class="filter-btn" data-status="open">Open Only</button>
+    <button class="filter-btn" data-status="reviewed">Reviewed Only</button>
+</div>
+
+<!-- No Feedback Messages -->
+<p id="no-open-feedback" style="display:none; text-align:center; font-style: italic; color: #666;">
+    No open feedback to review. 🎉
+</p>
+
+<p id="no-reviewed-feedback" style="display:none; text-align:center; font-style: italic; color: #666;">
+    No feedback has been marked as reviewed yet.
+</p>
+
+<!-- Feedback Cards -->
+{% for f in feedbacks %}
+<div class="feedback-card {% if f.reviewed %}reviewed{% endif %}" data-status="{{ 'reviewed' if f.reviewed else 'open' }}">
+    <div class="timestamp">Submitted: {{ f.timestamp.strftime('%Y-%m-%d') }}</div>
+
+    <p><strong>What do you like about the instructor’s teaching?</strong><br>
+        <div class="answer">{{ f.teaching_likes }}</div>
+    </p>
+    <p><strong>What do you recommend the instructor do to improve their teaching?</strong><br>
+        <span class="answer">{{ f.teaching_improvements }}</span>
+    </p>
+    <p><strong>What do you like about the labs?</strong><br>
+        <span class="answer">{{ f.lab_likes }}</span>
+    </p>
+    <p><strong>What do you recommend the lab instructors do to improve the labs?</strong><br>
+        <span class="answer">{{ f.lab_improvements }}</span>
+    </p>    
+
+    {% if f.reviewed %}
+      <span class="status-badge reviewed">Reviewed</span>
+    {% else %}
+      <form method="POST">
+          <input type="hidden" name="feedback_id" value="{{ f.id }}">
+          <button class="mark-reviewed-button" type="submit">Mark as Reviewed</button>
+      </form>
+  {% endif %}
+  
+</div>
+{% endfor %}
+
+{% if not feedbacks %}
+<p style="text-align:center; font-style: italic; color: #666;">No feedback submitted for you yet.</p>
+{% endif %}
+
+{% endblock content %}
