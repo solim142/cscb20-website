@@ -1,15 +1,42 @@
 {% extends ".template.html" %}
 {% block content %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for msg in messages %}
+                    <li>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <h1>Anonymous Feedback</h1>
 
     <div class="feedback_submission">
         <h3>Your feedback is completely anonymous. Feel free to share your thoughts, concerns, or suggestions about the course. No personal information will be collected.</h3>
-        <form action="#" method="post">
-            <textarea id="feedback_text" name="feedback_text" placeholder="Add your comments..."></textarea>
-        </form>
-        <div class="feedback_btns">
-            <button class="feedback_cancel">CANCEL</button>
-            <button class="feedback_submit">SUBMIT</button>
-        </div>
+        
+         <form method="POST">
+            <label for="instructor_username">Select Instructor:</label>
+            <select name="instructor_username" required>
+                {% for instructor in instructors %}
+                    <option value="{{ instructor.username }}">{{ instructor.username }}</option>
+                {% endfor %}
+            </select><br><br>
+    
+            <label>What do you like about the instructor’s teaching?</label><br>
+            <textarea name="teaching_likes" required></textarea><br><br>
+    
+            <label>What do you recommend to improve their teaching?</label><br>
+            <textarea name="teaching_improvements" required></textarea><br><br>
+    
+            <label>What do you like about the labs?</label><br>
+            <textarea name="lab_likes" required></textarea><br><br>
+    
+            <label>What do you recommend to improve lab teaching?</label><br>
+            <textarea name="lab_improvements" required></textarea><br><br>
+    
+            <button type="submit">Submit Feedback</button>
+        </form>       
     </div>
 {% endblock content %}
