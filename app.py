@@ -331,4 +331,13 @@ if __name__ == '__main__':
                 db.session.add(submission)
                 db.session.commit()
 
+        if len(Feedback.query.all()) == 0:
+            db.session.add(Feedback(instructor_username='instructor1', 
+                                    teaching_likes='Test', 
+                                    teaching_improvements='test', 
+                                    lab_likes='test', 
+                                    lab_improvements='test',
+                                    reviewed=False))
+            db.session.commit()
+
     app.run(debug=True)
