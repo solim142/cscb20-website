@@ -31,3 +31,39 @@ function toggleDark() {
         r.style.setProperty('--footertext', '#96A1B7');
     }
 }
+
+function openForm(button) {
+    if (button.textContent === "Remark Request") {
+        console.log("a");
+        button.textContent = "Close"
+
+        var form = button.nextElementSibling; // https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling
+        form.style.display = "block";
+
+        console.log(form)
+    } else {
+        console.log("b");
+        button.textContent = "Remark Request"
+
+        var form = button.nextElementSibling; // https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling
+        form.style.display = "none";
+    }
+}
+
+function editGrade(button) {
+    if (button.textContent === "Edit") {
+        console.log("a");
+        button.textContent = "Close Edit"
+
+        var form = button.nextElementSibling; // https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling
+        form.style.display = "block";
+
+        console.log(form)
+    } else {
+        console.log("b");
+        button.textContent = "Edit"
+
+        var form = button.nextElementSibling; // https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling
+        form.style.display = "none";
+    }
+}

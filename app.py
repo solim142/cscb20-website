@@ -204,12 +204,10 @@ def grades():
     if request.method == 'GET':
         if session['account_type'] == 'Student':
             all_grades = Grades.query.filter_by(username = session['session_name']).all()
-            print(all_grades)
             return render_template('grades.html', all_grades = all_grades, view_type = 'Student')
         else:
             all_grades = Grades.query.all()
             all_students = Accounts.query.filter_by(account_type = 'Student').all() # Because some students may not have any assignments graded
-            print(all_grades)
             return render_template('grades.html', all_grades = all_grades, all_students = all_students, view_type = 'Instructor')
 
     # The POST only exists for instructors. 
@@ -217,24 +215,20 @@ def grades():
         student_to_update = request.form['students']
         assignment_to_set_grade = request.form['assignment']
         grade_to_set = request.form['grade']
-        print(student_to_update, assignment_to_set_grade, grade_to_set)
 
         # If it exists, edit it, else create it
-        if Grades.query.filter_by(username = student_to_update, assignment = assignment_to_set_grade).first(): 
-            print("Updating")
-            Grades.query.filter_by(username = student_to_update, assignment = assignment_to_set_grade).update(dict(grade=grade_to_set))
-            db.session.commit()
-            flash("Grade updated successfully!")
-        else:
-            print("Adding")
+        query = Grades.query.filter_by(username = student_to_update, assignment = assignment_to_set_grade).first()
+
+        if not query: 
             grade = Grades(username = student_to_update, assignment = assignment_to_set_grade, grade = grade_to_set)
             db.session.add(grade)
             db.session.commit()
             flash("Grade submitted successfully!")
+        else:
+            flash("This grade already exists, edit the student grades directly!")
 
         all_grades = Grades.query.all()
         all_students = Accounts.query.filter_by(account_type = 'Student').all()
-        print(all_grades)
         return render_template('grades.html', all_grades = all_grades, all_students = all_students, view_type = 'Instructor')
 
 
@@ -243,14 +237,34 @@ def remark():
     reason = request.form['remark-reason']
     username = request.form['username']
     assignment = request.form['assignment']
-    print(reason, username, assignment)
 
-    # Check if already submitted
-    # If yes, update and flash message
-    # If no, update and flash message
+    query = Grades.query.filter_by(username = username, assignment = assignment).first()
+    
+    if query.remark_status == 'Pending': # If a remark request already exists
+        flash(message="Remark request updated!")
+    else:
+        flash(message="Remark request submitted!")
+
+    Grades.query.filter_by(username = username, assignment = assignment).update(dict(remark_status='Pending', remark_reason=reason))
+    db.session.commit()
 
     return redirect(url_for('grades'))
 
+
+@app.route("/editGrade", methods=['POST'])
+def editGrade():
+    username = request.form['username']
+    assignment = request.form['assignment']
+    grade = request.form['grade']
+    reason = request.form['reason']
+    status = request.form['status']
+    
+    Grades.query.filter_by(username = username, assignment = assignment).update(dict(grade = grade, remark_status = status, remark_reason = reason))
+
+    db.session.commit()
+    flash(message="Grade updated successfully.")
+
+    return redirect(url_for('grades'))
 
 ############################
 # FEEDBACK HANDLING SYSTEM #

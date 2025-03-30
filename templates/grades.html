@@ -1,5 +1,16 @@
 {% extends ".template.html" %}
 {% block content %}
+    <header>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </header>
     {% if view_type == 'Instructor' %}
         <h1>Student Grades</h1>
 
@@ -48,18 +59,34 @@
                     <td>{{ Grade.grade }}</td>
                     <td>{{ Grade.remark_status }}</td>
                     {% if view_type == 'Student' %}
-                        <td><button onclick="openForm()">Remark Request</button></td>
                         <td>
-                            <form action="{{ url_for('remark') }}" method="POST">
+                            <button onclick="openForm(this)" class="remark-button">Remark Request</button>
+                            <form action="{{ url_for('remark') }}" method="POST" class="sub-form" style="display: none;">
                                 <label for="remark-reason">Reason:</label>
-                                <input type="text" name="remark-reason">
+                                <input type="text" name="remark-reason" required>
                                 <input type="hidden" name = "username" value="{{ Grade.username }}">
                                 <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
                                 <button type="submit">Submit Remark Request</button>
                             </form>
                         </td>
                     {% else %}
-                        <th>{{ Grade.remark_reason }}</th>
+                        <td>{{ Grade.remark_reason }}</td>
+                        <td>
+                            <button onclick="editGrade(this)" class="remark-button">Edit</button>
+                            <form action="{{ url_for('editGrade') }}" method="POST" class="sub-form" style="display: none;">
+                                <label for="grade">Grade:</label>
+                                <input type="number" name = "grade" value="{{ Grade.grade }}" required>
+                                <input type="hidden" name = "username" value="{{ Grade.username }}">
+                                <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
+                                <input type="hidden" name = "reason" value="{{ Grade.remark_reason }}">
+                                <select id="status_selector" name="status">
+                                    <option value="Pending" selected="selected">Pending</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                                <button type="submit">Submit Remark Request</button>
+                            </form>
+                        </td>
                     {% endif %}
                 </tr>
             {% endfor %}
