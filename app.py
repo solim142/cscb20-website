@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, session
 from flask_bcrypt import Bcrypt
-from sqlalchemy import ForeignKey, CheckConstraint, UniqueConstraint
+from sqlalchemy import ForeignKey, CheckConstraint, UniqueConstraint, text
 from sqlalchemy.orm import mapped_column, Mapped
 from flask_sqlalchemy import SQLAlchemy
 import datetime
@@ -13,9 +13,6 @@ def ADD_NEW_USER_QUERY(new_username: str, new_password: str, new_acctype: str):
         password=new_password,
         account_type=new_acctype
     )
-
-def GET_GRADES_BY_USERNAME_QUERY(username: str):
-    return Grades.query.filter_by(username=username)
 
 def GET_USER_BY_NAME_QUERY(username: str):
     return Accounts.query.filter_by(username=username).first()
@@ -53,28 +50,20 @@ class Grades(db.Model):
     assignment: Mapped[str] = mapped_column(nullable=False)
     grade: Mapped[float] = mapped_column(default=0, nullable=False)
 
+    remark_status: Mapped[str] = mapped_column(default='None')
+    remark_reason: Mapped[str] = mapped_column(default='None')
+
     # https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html
-    #https://docs.sqlalchemy.org/en/20/core/constraints.html#check-constraint
+    # https://docs.sqlalchemy.org/en/20/core/constraints.html#check-constraint
     __table_args__ = (
         CheckConstraint('grade >= 0'),
         UniqueConstraint('username', 'assignment'), # There should only be 1 grade for each assignment of each student, https://docs.sqlalchemy.org/en/20/core/constraints.html#sqlalchemy.schema.UniqueConstraint
+        CheckConstraint(remark_status.in_(["None", "Pending", "Approved", "Rejected"]))
     )
 
     def __repr__(self):
-        return f"Grades('{self.username}', '{self.assignment}', {self.grade})"
-
-
-class Remark(db.Model):
-    __tablename__ = "remark"
-    id: Mapped[int] = mapped_column(primary_key=True, unique=True)
-    assignment: Mapped[str] = mapped_column(nullable=False)
-    username: Mapped[str] = mapped_column(nullable=False)
-    reason: Mapped[str] = mapped_column(default='None')
-    status: Mapped[int] = mapped_column(default=0) # 0 for Under Review, 1 for Approved, 2 for Rejected
-
-    def __repr__(self):
-        return f"Remark('{self.username}', '{self.assignment}', '{self.reason}', '{self.status}')"
-
+        return f"Grades('{self.username}', '{self.assignment}', '{self.grade}', '{self.remark_status}', '{self.remark_reason}')"
+    
 
 class Feedback(db.Model):
     __tablename__ = "feedback"
@@ -91,9 +80,9 @@ class Feedback(db.Model):
         return f"Feedback('{self.instructor_username}', '{self.teaching_likes}', '{self.teaching_improvements}', '{self.lab_likes}', '{self.lab_improvements}', '{self.timestamp}')"
 
 
-###########################
-#ROUTING ENDPOINT HANDLING#
-###########################
+#####################################
+# GENERAL ROUTING ENDPOINT HANDLING #
+#####################################
 
 @app.route("/")
 @app.route("/home")
@@ -149,6 +138,9 @@ def resources():
 def team():
     return render_template("team.html")
 
+##########################
+# ACCOUNT ROUTE HANDLING #
+##########################
 
 @app.route("/register", methods=('POST', 'GET'))
 def register_account():
@@ -202,45 +194,67 @@ def login_account():
     session['account_type'] = find_user_query_output.account_type
     return redirect(url_for('home'))
 
+######################
+# GRADES AND REMARKS #
+######################
 
-@app.route('/grades')
-@app.route('/grades/get', methods=('POST', 'GET'))
+@app.route("/grades", methods = ('POST', 'GET'))
 def grades():
+
     if request.method == 'GET':
-        return render_template('grade_editor.html')
-    
-    student_to_get = request.form['student_username']
+        if session['account_type'] == 'Student':
+            all_grades = Grades.query.filter_by(username = session['session_name']).all()
+            print(all_grades)
+            return render_template('grades.html', all_grades = all_grades, view_type = 'Student')
+        else:
+            all_grades = Grades.query.all()
+            all_students = Accounts.query.filter_by(account_type = 'Student').all() # Because some students may not have any assignments graded
+            print(all_grades)
+            return render_template('grades.html', all_grades = all_grades, all_students = all_students, view_type = 'Instructor')
 
-    if session['account_type'] != 'Teacher':
-        return redirect(url_for('home'))
-    
-    grades_query = db.session.execute(GET_GRADES_BY_USERNAME_QUERY(student_to_get))
-    if len(grades_query._allrows()) == 0:
-       return render_template('grade_editor.html')
-    
-    return render_template('grade_editor.html', student_data=grades_query._allrows())
+    # The POST only exists for instructors. 
+    else: 
+        student_to_update = request.form['students']
+        assignment_to_set_grade = request.form['assignment']
+        grade_to_set = request.form['grade']
+        print(student_to_update, assignment_to_set_grade, grade_to_set)
 
-#######################
-#GRADE HANDLING SYSTEM#
-#######################
+        # If it exists, edit it, else create it
+        if Grades.query.filter_by(username = student_to_update, assignment = assignment_to_set_grade).first(): 
+            print("Updating")
+            Grades.query.filter_by(username = student_to_update, assignment = assignment_to_set_grade).update(dict(grade=grade_to_set))
+            db.session.commit()
+            flash("Grade updated successfully!")
+        else:
+            print("Adding")
+            grade = Grades(username = student_to_update, assignment = assignment_to_set_grade, grade = grade_to_set)
+            db.session.add(grade)
+            db.session.commit()
+            flash("Grade submitted successfully!")
 
-@app.route('/grades/set', methods=('POST', 'GET'))
-def set_grade():
-    student_to_update = request.form['student_username']
-    assignment_to_set_grade = request.form['assignment']
-    grade_to_set = request.form['grade']
+        all_grades = Grades.query.all()
+        all_students = Accounts.query.filter_by(account_type = 'Student').all()
+        print(all_grades)
+        return render_template('grades.html', all_grades = all_grades, all_students = all_students, view_type = 'Instructor')
 
-    if session['account_type'] != 'Teacher':
-        return redirect(url_for('home'))
-    
-    if request.method == 'GET':
-        return render_template('grade_editor.html')
-    # Query the student to see if their grade already exists
-    # if it exists, update that row with UPDATE_GRADE_QUERY
-    # if row does not exist add in row with ADD_GRADE_QUERY
 
-#feedback route
-#feedback route
+@app.route("/remark", methods = ['POST'])
+def remark():
+    reason = request.form['remark-reason']
+    username = request.form['username']
+    assignment = request.form['assignment']
+    print(reason, username, assignment)
+
+    # Check if already submitted
+    # If yes, update and flash message
+    # If no, update and flash message
+
+    return redirect(url_for('grades'))
+
+
+############################
+# FEEDBACK HANDLING SYSTEM #
+############################
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     if session['account_type'] != 'Student':
@@ -272,6 +286,7 @@ def feedback():
 
     return render_template('feedback.html', instructors=instructors)
 
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
@@ -287,6 +302,19 @@ if __name__ == '__main__':
             query = GET_USER_BY_NAME_QUERY(account.username)
             if not query:
                 db.session.add(account)
+                db.session.commit()
+        
+        grade_submissions = [
+            Grades(username = 'student1', assignment = 'Assignment 1', grade = 0),
+            Grades(username = 'student1', assignment = 'Assignment 2', grade = 20),
+            Grades(username = 'student2', assignment = 'Assignment 1', grade = 30),
+            Grades(username = 'student2', assignment = 'Assignment 3', grade = 40, remark_status = "Pending", remark_reason = "I forgot."),
+        ]
+
+        for submission in grade_submissions:
+            query = Grades.query.filter_by(username = submission.username, assignment = submission.assignment).first()
+            if not query:
+                db.session.add(submission)
                 db.session.commit()
 
     app.run(debug=True)

@@ -1,0 +1,71 @@
+{% extends ".template.html" %}
+{% block content %}
+    {% if view_type == 'Instructor' %}
+        <h1>Student Grades</h1>
+
+        <h2>Enter student grade to set or update:</h2>
+        <form action="{{ url_for('grades') }}" method="POST">
+            <label for="student_username_input">Student: </label>
+            <select id="student_username_input" name="students">
+                {% for Student in all_students %}
+                    <option value="{{ Student.username }}">{{ Student.username }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="student_assignment_selector">Assignment: </label>
+            <select id="student_assignment_selector" name="assignment">
+                <option value="Assignment 1">Assignment 1</option>
+                <option value="Assignment 2">Assignment 2</option>
+                <option value="Assignment 3">Assignment 3</option>
+                <option value="Midterm">Midterm</option>
+                <option value="Final">Final</option>
+            </select>
+    
+            <label for="student_grade_input">Grade: </label>
+            <input id="student_grade_input" name="grade" type="number">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="line"></div>
+    {% endif%}
+
+    <h1>Grades</h1>
+    {% if all_grades %}
+        <table class="grades_table">
+            <tr>
+                <th>Student Username</th>
+                <th>Assignment</th>
+                <th>Grade</th>
+                <th>Remark Status</th>
+                {% if view_type == 'Instructor' %}
+                    <th>Reason</th>
+                {% endif %}
+            </tr>
+            {% for Grade in all_grades %}
+                <tr>
+                    <td>{{ Grade.username }}</td>
+                    <td>{{ Grade.assignment }}</td>
+                    <td>{{ Grade.grade }}</td>
+                    <td>{{ Grade.remark_status }}</td>
+                    {% if view_type == 'Student' %}
+                        <td><button onclick="openForm()">Remark Request</button></td>
+                        <td>
+                            <form action="{{ url_for('remark') }}" method="POST">
+                                <label for="remark-reason">Reason:</label>
+                                <input type="text" name="remark-reason">
+                                <input type="hidden" name = "username" value="{{ Grade.username }}">
+                                <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
+                                <button type="submit">Submit Remark Request</button>
+                            </form>
+                        </td>
+                    {% else %}
+                        <th>{{ Grade.remark_reason }}</th>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+        <p>No grades have been submitted.</p>
+    {% endif%}
+{% endblock content %}
