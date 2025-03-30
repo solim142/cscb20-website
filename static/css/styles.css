@@ -138,12 +138,18 @@ a:hover:not(.footerLink) {
     display: block;
 }
 
-.navbar .icon, .navbar .mobile {
+.navbar .icon, .navbar .mobile, .t {
     display: none;
 }
 
 @media (max-aspect-ratio: 1/1) or (width <= 1080px) {
-    .navbar a {display: none;}
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        display: none;
+    }
 
     .navbar a.icon, .navbar .mobile {
         float: right;
@@ -158,10 +164,9 @@ a:hover:not(.footerLink) {
         top: 0;
     }
 
-    .navbar.responsive a {
+    .responsive .mobile a {
         float: none;
         display: block;
-        text-align: left;
     }
 
     .sub-navbar-btn {display: none}

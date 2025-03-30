@@ -11,63 +11,73 @@
     
     <!-- The navbar -->
     <div class="navbar" id="mainNav">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('syllabus') }}">Syllabus</a>
-        <a href="{{ url_for('syllabus') }}">News</a>
-        <div class="sub-navbar">
-            <button class="sub-navbar-btn">Lectures</button>
-            <div class="sub-nabvar-content">
+        {% if session.session_name %}
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('syllabus') }}">Syllabus</a>
+            <a href="{{ url_for('syllabus') }}">News</a>
+            <div class="sub-navbar">
+                <button class="sub-navbar-btn">Lectures</button>
+                <div class="sub-nabvar-content">
+                    <a href="{{ url_for('lecture') }}">Lecture Notes</a>
+                    <a href="{{ url_for('tests') }}">Tests</a>
+                    <a href="{{ url_for('calendar') }}">Calendar</a>
+                </div>
+            </div>
+            <a href="{{ url_for('tutorials') }}">Tutorials</a>
+            <div class="sub-navbar">
+                <button class="sub-navbar-btn">Assignments</button>
+                <div class="sub-nabvar-content">
+                    <a href="{{ url_for('assignments') }}">Assignments</a>
+                    <a href="{{ url_for('assignment1') }}">Assignment 1</a>
+                    <a href="{{ url_for('assignment2') }}">Assignment 2</a>
+                    <a href="{{ url_for('assignment3') }}">Assignment 3</a>
+                    <a href="https://markus2.utsc.utoronto.ca/" target="_blank" rel="noopener noreferrer">MarkUs</a> <!-- Based on https://stackoverflow.com/questions/17711146/how-to-open-link-in-a-new-tab-in-html -->
+                </div>
+            </div>
+            <a href="{{ url_for('grades') }}">Grades</a>
+            <a href="https://piazza.com/class/m5fmz9kzjo83yk" target="_blank" rel="noopener noreferrer">Piazza</a>
+            <div class="sub-navbar">
+                <button class="sub-navbar-btn">Extras</button>
+                <div class="sub-nabvar-content">
+                    <a href="{{ url_for('feedback') }}">Feedback</a>
+                    <a href="{{ url_for('resources') }}">Resources</a>
+                    <a href="{{ url_for('team') }}">Team</a>
+                </div>
+            </div>
+            <a href="{{ url_for('logout') }}">Log out</a>
+        {% else %}
+            <a href="{{ url_for('login_account') }}">Log in</a>
+            <a href="{{ url_for('register_account') }}">Register</a>
+        {% endif %}
+        
+        <!-- Now for the mobile menu -->
+
+        <a class="icon" onclick="switchResponsive()">☰</a>
+
+        <div class="mobile">
+            {% if session.session_name %}
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('syllabus') }}">Syllabus</a>
+                <a href="{{ url_for('news') }}">News</a>
                 <a href="{{ url_for('lecture') }}">Lecture Notes</a>
                 <a href="{{ url_for('tests') }}">Tests</a>
                 <a href="{{ url_for('calendar') }}">Calendar</a>
-            </div>
-        </div>
-        <a href="{{ url_for('tutorials') }}">Tutorials</a>
-        <div class="sub-navbar">
-            <button class="sub-navbar-btn">Assignments</button>
-            <div class="sub-nabvar-content">
+                <a href="{{ url_for('tutorials') }}">Tutorials</a>
                 <a href="{{ url_for('assignments') }}">Assignments</a>
                 <a href="{{ url_for('assignment1') }}">Assignment 1</a>
                 <a href="{{ url_for('assignment2') }}">Assignment 2</a>
                 <a href="{{ url_for('assignment3') }}">Assignment 3</a>
-                <a href="https://markus2.utsc.utoronto.ca/" target="_blank" rel="noopener noreferrer">MarkUs</a> <!-- Based on https://stackoverflow.com/questions/17711146/how-to-open-link-in-a-new-tab-in-html -->
-            </div>
-        </div>
-        <a href="{{ url_for('grades') }}">Grades</a>
-        <a href="https://piazza.com/class/m5fmz9kzjo83yk" target="_blank" rel="noopener noreferrer">Piazza</a>
-        <div class="sub-navbar">
-            <button class="sub-navbar-btn">Extras</button>
-            <div class="sub-nabvar-content">
+                <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
+                <a href="{{ url_for('grades') }}">Grades</a>
+                <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
                 <a href="{{ url_for('feedback') }}">Feedback</a>
                 <a href="{{ url_for('resources') }}">Resources</a>
                 <a href="{{ url_for('team') }}">Team</a>
-            </div>
-        </div>
-        <a href="#">Log out</a>
-        
-        <!-- Now for the mobile menu -->
-
-        <a class="icon" onclick="switchResponsive()">≡</a>
-
-        <div class="mobile">
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('syllabus') }}">Syllabus</a>
-            <a href="{{ url_for('news') }}">News</a>
-            <a href="{{ url_for('lecture') }}">Lecture Notes</a>
-            <a href="{{ url_for('tests') }}">Tests</a>
-            <a href="{{ url_for('calendar') }}">Calendar</a>
-            <a href="{{ url_for('tutorials') }}">Tutorials</a>
-            <a href="{{ url_for('assignments') }}">Assignments</a>
-            <a href="{{ url_for('assignment1') }}">Assignment 1</a>
-            <a href="{{ url_for('assignment2') }}">Assignment 2</a>
-            <a href="{{ url_for('assignment3') }}">Assignment 3</a>
-            <a href="https://markus2.utsc.utoronto.ca/">MarkUs</a>
-            <a href="{{ url_for('grades') }}">Grades</a>
-            <a href="https://piazza.com/class/m5fmz9kzjo83yk">Piazza</a>
-            <a href="{{ url_for('feedback') }}">Feedback</a>
-            <a href="{{ url_for('resources') }}">Resources</a>
-            <a href="{{ url_for('team') }}">Team</a>
-            <a href="#">Log out</a>
+                <a href="{{ url_for('logout') }}">Log out</a>
+            {% else %}
+                <a href="{{ url_for('login_account') }}">Log in</a>
+                <a href="{{ url_for('register_account') }}">Register</a>
+            {% endif %}
         </div>
     </div>
 

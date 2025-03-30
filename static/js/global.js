@@ -1,9 +1,9 @@
 function switchResponsive() {
     var x = document.getElementById("mainNav"); // Gets the id
-    if (x.className === "topnav") {
+    if (x.className === "navbar") {
         x.className += " responsive"; // Basically appending the class that would change the css
     } else {
-        x.className = "topnav"; // Removing the extra class
+        x.className = "navbar"; // Removing the extra class
     }
 }
 
