@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, session
 from flask_bcrypt import Bcrypt
-from sqlalchemy import ForeignKey, CheckConstraint
+from sqlalchemy import ForeignKey, CheckConstraint, UniqueConstraint
 from sqlalchemy.orm import mapped_column, Mapped
 from flask_sqlalchemy import SQLAlchemy
 import datetime
@@ -15,11 +15,9 @@ def ADD_NEW_USER_QUERY(new_username: str, new_password: str, new_acctype: str):
     )
 
 def GET_GRADES_BY_USERNAME_QUERY(username: str):
-    print(Grades.query.filter_by(username=username))
     return Grades.query.filter_by(username=username)
 
 def GET_USER_BY_NAME_QUERY(username: str):
-    print(Accounts.query.filter_by(username=username).first())
     return Accounts.query.filter_by(username=username).first()
 
 # INITIALIZE APP AND BCRYPT
@@ -58,11 +56,25 @@ class Grades(db.Model):
     # https://docs.sqlalchemy.org/en/14/orm/declarative_tables.html
     #https://docs.sqlalchemy.org/en/20/core/constraints.html#check-constraint
     __table_args__ = (
-        CheckConstraint('grade >= 0'),  
+        CheckConstraint('grade >= 0'),
+        UniqueConstraint('username', 'assignment'), # There should only be 1 grade for each assignment of each student, https://docs.sqlalchemy.org/en/20/core/constraints.html#sqlalchemy.schema.UniqueConstraint
     )
 
     def __repr__(self):
         return f"Grades('{self.username}', '{self.assignment}', {self.grade})"
+
+
+class Remark(db.Model):
+    __tablename__ = "remark"
+    id: Mapped[int] = mapped_column(primary_key=True, unique=True)
+    assignment: Mapped[str] = mapped_column(nullable=False)
+    username: Mapped[str] = mapped_column(nullable=False)
+    reason: Mapped[str] = mapped_column(default='None')
+    status: Mapped[int] = mapped_column(default=0) # 0 for Under Review, 1 for Approved, 2 for Rejected
+
+    def __repr__(self):
+        return f"Remark('{self.username}', '{self.assignment}', '{self.reason}', '{self.status}')"
+
 
 class Feedback(db.Model):
     __tablename__ = "feedback"
@@ -73,7 +85,7 @@ class Feedback(db.Model):
     lab_likes: Mapped[str] = mapped_column(default="None")
     lab_improvements: Mapped[str] = mapped_column(default="None")
     timestamp: Mapped[datetime.datetime] = mapped_column(default=datetime.datetime.now)
-    reviewed: Mapped[bool] = mapped_column(default=False)
+    reviewed: Mapped[bool] = mapped_column(default=False) # True if reviewed
 
     def __repr__(self):
         return f"Feedback('{self.instructor_username}', '{self.teaching_likes}', '{self.teaching_improvements}', '{self.lab_likes}', '{self.lab_improvements}', '{self.timestamp}')"
