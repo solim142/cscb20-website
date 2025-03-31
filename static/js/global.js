@@ -67,3 +67,42 @@ function editGrade(button) {
         form.style.display = "none";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.feedback-card');
+    const msgOpen = document.getElementById('no-open-feedback');
+    const msgReviewed = document.getElementById('no-reviewed-feedback');
+
+    function hideMessages() {
+        msgOpen.style.display = 'none';
+        msgReviewed.style.display = 'none';
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const status = btn.getAttribute('data-status');
+
+            let visibleCount = 0;
+            hideMessages();
+
+            cards.forEach(card => {
+                if (status === 'all' || card.getAttribute('data-status') === status) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show appropriate message if nothing visible
+            if (status === 'open' && visibleCount === 0) {
+                msgOpen.style.display = 'block';
+            } else if (status === 'reviewed' && visibleCount === 0) {
+                msgReviewed.style.display = 'block';
+            }
+        });
+    });
+});
