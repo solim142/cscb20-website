@@ -302,11 +302,11 @@ def feedback():
 
 @app.route('/view_feedback', methods=['GET', 'POST'])
 def view_feedback():
-    if not app_session.get(IS_LOGGED_IN) or app_session.get(ACCOUNT_TYPE) != 'Teacher':
-        flash("Access denied. Only teachers can view this page.")
+    if session['account_type'] != 'Instructor':
+        flash("Access denied. Only instructors can view this page.")
         return redirect(url_for('login_account'))
 
-    instructor_username = app_session.get(SESSION_NAME)
+    instructor_username = session['session_name']
 
     if request.method == 'POST':
         feedback_id = request.form.get('feedback_id')
