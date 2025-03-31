@@ -862,14 +862,16 @@ footer {
     justify-content: center;
 }
 
-#login_form label {
+#login_form label,
+#register_form label {
     display: block;
     font-weight: 500;
     margin-bottom: 6px;
     color: #333;
 }
 
-#login_form .form_input {
+#login_form .form_input,
+#register_form .form_input {
     width: 90%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -914,3 +916,30 @@ footer {
 .register-text a:hover {
     text-decoration: underline;
 }
+
+#register_form select {
+    width: 95%;
+    padding: 10px 12px;
+    font-size: 0.95em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+}
+
+.welcome-message {
+    display: block;
+    width: fit-content;
+    background-color: #c5ebe4;
+    color: #007FA3;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 1em;
+    font-weight: bolder;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-message a{color:  #02607a;}
