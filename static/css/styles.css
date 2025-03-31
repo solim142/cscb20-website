@@ -758,7 +758,8 @@ footer {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
-    padding: 24px;
+    padding: 25px;
+    padding-right: 50px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
@@ -774,7 +775,7 @@ footer {
 
 
 .feedback-form textarea {
-   width: 90%;
+   width: 100%;
     padding: 10px 12px;
     font-size: 0.95em;
     border: 1px solid #ccc;
