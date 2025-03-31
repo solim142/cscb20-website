@@ -16,27 +16,27 @@
     <div class="feedback_submission">
         <h3>Your feedback is completely anonymous. Feel free to share your thoughts, concerns, or suggestions about the course. No personal information will be collected.</h3>
         
-         <form method="POST">
+        <form method="POST" class="feedback-form">
             <label for="instructor_username">Select Instructor:</label>
             <select name="instructor_username" required>
                 {% for instructor in instructors %}
                     <option value="{{ instructor.username }}">{{ instructor.username }}</option>
                 {% endfor %}
-            </select><br><br>
-    
-            <label>What do you like about the instructor’s teaching?</label><br>
-            <textarea name="teaching_likes" required></textarea><br><br>
-    
-            <label>What do you recommend to improve their teaching?</label><br>
-            <textarea name="teaching_improvements" required></textarea><br><br>
-    
-            <label>What do you like about the labs?</label><br>
-            <textarea name="lab_likes" required></textarea><br><br>
-    
-            <label>What do you recommend to improve lab teaching?</label><br>
-            <textarea name="lab_improvements" required></textarea><br><br>
-    
+            </select>
+        
+            <label for="teaching_likes">What do you like about the instructor's teaching?</label>
+            <textarea name="teaching_likes" required></textarea>
+        
+            <label for="teaching_improvements">What do you recommend the instructor do to improve their teaching?</label>
+            <textarea name="teaching_improvements" required></textarea>
+        
+            <label for="lab_likes">What do you like about the labs?</label>
+            <textarea name="lab_likes" required></textarea>
+        
+            <label for="lab_improvements">What do you recommend the lab instructors do to improve the labs?</label>
+            <textarea name="lab_improvements" required></textarea>
+        
             <button type="submit">Submit Feedback</button>
-        </form>       
+        </form>     
     </div>
 {% endblock content %}
