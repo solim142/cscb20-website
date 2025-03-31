@@ -272,11 +272,9 @@ def editGrade():
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     if session['account_type'] != 'Student':
-        flash('Only logged-in students can submit feedback.')
-        return redirect(url_for('login_account'))
+        return redirect(url_for('view_feedback')) # redirecting instructors to view their feedback
 
     instructors = Accounts.query.filter_by(account_type='Instructor').all()
-    print("Number of instructors available: ", len(instructors))
 
     if request.method == 'POST':
         instructor_username = request.form['instructor_username']
@@ -303,8 +301,7 @@ def feedback():
 @app.route('/view_feedback', methods=['GET', 'POST'])
 def view_feedback():
     if session['account_type'] != 'Instructor':
-        flash("Access denied. Only instructors can view this page.")
-        return redirect(url_for('login_account'))
+        return redirect(url_for('feedback'))
 
     instructor_username = session['session_name']
 
