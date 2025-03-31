@@ -1,6 +1,16 @@
 {% extends ".template.html" %}
 {% block content %}
     <h1>CSCB20H3 S LEC01 20251:Introduction to Databases and Web Applications</h1>
+    {% if session.account_type == 'Student' %}
+    <p class="welcome-message">
+      👋 Welcome {{ session.session_name.capitalize() }}, click <a href="{{ url_for('grades') }}">here</a> to see your current grades.
+    </p>
+  
+  {% elif session.account_type == 'Instructor' %}
+    <p class="welcome-message">
+      👋 Welcome instructor {{ session.session_name.capitalize() }}, click <a href="{{ url_for('grades') }}">here</a> to see all the grades of your class.
+    </p>
+  {% endif %}
     <div class="description">
         <h3 id= "heading">Welcome to CSCB20 Winter 2025!</h3>
         <p>This course provides a hands-on introduction to databases and web application development. You will gain both theoretical knowledge and practical skills to build a solid foundation in these areas.</p>
