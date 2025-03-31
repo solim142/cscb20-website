@@ -650,3 +650,105 @@ footer {
     background-color: #BDE2DB;
     box-shadow: 0 0 15px #BDE2DB, 0 0 30px #7ECBBF;
   }
+  .feedback-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left: 5px solid var(--UofTBlue);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.05);
+}
+
+.feedback-card.reviewed {
+    border-left-color: var(--UofTGreen);
+    opacity: 0.85;
+}
+
+.feedback-card .timestamp {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.feedback-card .status {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.mark-reviewed-button {
+    padding: 6px 10px;
+    background-color: var(--UofTLightBlue);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.mark-reviewed-button:hover {
+    background-color: var(--UofTLightBlue);
+}
+
+.flash {
+    background-color: #e0ffe0;
+    border: 1px solid #b4ffb4;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.toggle-btns {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.toggle-btns button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.toggle-btns button.active {
+    background-color: var(--UofTLightBlue);
+    color: white;
+    border-color: var(--UofTLightBlue);
+}
+
+.answer {
+    display: block;
+    background-color: #e0ebf0;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #BDE2DB; 
+    color: #016c5f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .toggle-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; 
+    }
+
+    .toggle-btns button {
+        width: 90%;
+    }
+}
