@@ -1,22 +1,33 @@
 {% extends ".template.html" %}
 {% block content %}
-  <header>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  </header>
-      <form action="{{ url_for('login_account') }}" method="POST" id="login_form">
-          <label for="login_username">Username</label>
-          <input id="login_username" name="username" class="form_input" type="text">
-          <label for="login_password">Password</label>
-          <input id="login_password" name="password" class="form_input" type="password">
-          <button type="submit">Login</button>
-      </form>
-      <a href="{{ url_for('register_account') }}">Create new account</a>
+<div class="login-card">
+    <div class="login-header">
+        <div class="login-icon">🏛️</div>
+        <h2>Welcome back</h2>
+        <p>Please enter your details to sign in</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login_account') }}" method="POST" id="login_form">
+        <label for="login_username">Username</label>
+        <input id="login_username" name="username" class="form_input" type="text" placeholder="Enter your username" required>
+
+        <label for="login_password">Password</label>
+        <input id="login_password" name="password" class="form_input" type="password" placeholder="Enter your password" required>
+
+        <button type="submit" class="login-button">Log in</button>
+    </form>
+
+    <p class="register-text">Don't have an account? <a href="{{ url_for('register_account') }}">Create account</a></p>
+</div>
+
 {% endblock content %}
