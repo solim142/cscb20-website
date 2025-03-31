@@ -74,7 +74,7 @@ class Feedback(db.Model):
     lab_likes: Mapped[str] = mapped_column(default="None")
     lab_improvements: Mapped[str] = mapped_column(default="None")
     timestamp: Mapped[datetime.datetime] = mapped_column(default=datetime.datetime.now)
-    reviewed: Mapped[bool] = mapped_column(default=False) # True if reviewed
+    reviewed = db.Column(db.Boolean, default=False) # True if reviewed
 
     def __repr__(self):
         return f"Feedback('{self.instructor_username}', '{self.teaching_likes}', '{self.teaching_improvements}', '{self.lab_likes}', '{self.lab_improvements}', '{self.timestamp}')"
@@ -299,6 +299,25 @@ def feedback():
         return redirect(url_for('feedback'))
 
     return render_template('feedback.html', instructors=instructors)
+
+@app.route('/view_feedback', methods=['GET', 'POST'])
+def view_feedback():
+    if not app_session.get(IS_LOGGED_IN) or app_session.get(ACCOUNT_TYPE) != 'Teacher':
+        flash("Access denied. Only teachers can view this page.")
+        return redirect(url_for('login_account'))
+
+    instructor_username = app_session.get(SESSION_NAME)
+
+    if request.method == 'POST':
+        feedback_id = request.form.get('feedback_id')
+        feedback = Feedback.query.get(feedback_id)
+        if feedback and feedback.instructor_username == instructor_username:
+            feedback.reviewed = True
+            db.session.commit()
+            flash('Feedback marked as reviewed.')
+
+    feedbacks = Feedback.query.filter_by(instructor_username=instructor_username).all()
+    return render_template('view_feedback.html', feedbacks=feedbacks)
 
 
 if __name__ == '__main__':
