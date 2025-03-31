@@ -1,0 +1,2 @@
+# Lucas Side
+For the assignment, I implemented the account management (account creation, logging in, logging out), and session handling systems (data onif the user is logged in, and what kind of account the user is under (student or instructor)).
