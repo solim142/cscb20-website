@@ -14,8 +14,10 @@ One challenge I faced was learning how to initially structure the database in py
 # Daniel's Side
 For the assignment, I refactored the old .html to the new Jinja template, with .template.html as the parent template, as well as implemented the Grades & Remark system (Different view for instructor and student, displaying query as a table, adding the buttons to hide or show grade update/student remark request)
 
-# Tahir's Side
-
+# Tahira's Side
+I successfully implemented the anonymous feedback system by creating a form that allows students to select an instructor (filtered from the accounts table where account_type is 'Teacher') and submit structured feedback fields (teaching_likes, teaching_improvements, lab_likes, lab_improvements). Upon submission, the feedback is stored in the feedback table using SQLAlchemy, without storing the student's username to ensure anonymity.
+I made sure instructors can view only the feedback submitted for them by querying the feedback table using the logged-in instructor’s session['session_name'], ensuring they only access entries linked to their account. Each feedback entry is displayed in a styled "feedback" card layout, and instructors can mark entries as "Reviewed" by submitting a form that updates the reviewed boolean column in the database. I initially struggled with making the reviewed status persist across sessions, but resolved it by ensuring the reviewed value was updated with SQLAlchemy and committed properly using db.session.commit().
+As an extra feature, I added interactive filtering options for instructors to view feedback based on status: All, Open, or Reviewed. This was implemented using JavaScript by assigning data-status attributes to each feedback card and toggling their visibility based on the selected filter button
 
 # Struggles
 In general, there weren't many struggles for building the site. We already had most pages complete, with global colour variables and pre-set colours and options from Assignment 2 that allowed for modularity, so re-factoring was not a lot of trouble.
