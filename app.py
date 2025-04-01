@@ -87,55 +87,93 @@ class Feedback(db.Model):
 @app.route("/")
 @app.route("/home")
 def home():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("index.html")
 
 @app.route("/syllabus")
 def syllabus():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("syllabus.html")
 
 @app.route("/news")
 def news():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("news.html")
 
-# Temporary
 @app.route("/lecture")
 def lecture():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("lecture.html")
 
 @app.route("/tests")
 def tests():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("tests.html")
 
 @app.route("/calendar")
 def calendar():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("calendar.html")
 
 @app.route("/tutorials")
 def tutorials():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("labs.html")
 
 @app.route("/assignments")
 def assignments():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("assignments.html")
 
 @app.route("/assignment1")
 def assignment1():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("assignment1.html")
 
 @app.route("/assignment2")
 def assignment2():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("assignment2.html")
 
 @app.route("/assignment3")
 def assignment3():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("assignment3.html")
 
 @app.route("/resources")
 def resources():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("resources.html")
 
 @app.route("/team")
 def team():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     return render_template("team.html")
 
 ##########################
@@ -200,6 +238,8 @@ def login_account():
 
 @app.route("/grades", methods = ('POST', 'GET'))
 def grades():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
 
     if request.method == 'GET':
         if session['account_type'] == 'Student':
@@ -234,6 +274,9 @@ def grades():
 
 @app.route("/remark", methods = ['POST'])
 def remark():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     reason = request.form['remark-reason']
     username = request.form['username']
     assignment = request.form['assignment']
@@ -253,6 +296,9 @@ def remark():
 
 @app.route("/editGrade", methods=['POST'])
 def editGrade():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     username = request.form['username']
     assignment = request.form['assignment']
     grade = request.form['grade']
@@ -271,6 +317,9 @@ def editGrade():
 ############################
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     if session['account_type'] != 'Student':
         return redirect(url_for('view_feedback')) # redirecting instructors to view their feedback
 
@@ -300,6 +349,9 @@ def feedback():
 
 @app.route('/view_feedback', methods=['GET', 'POST'])
 def view_feedback():
+    if len(session) == 0:
+        return redirect(url_for('login_account'))
+
     if session['account_type'] != 'Instructor':
         return redirect(url_for('feedback'))
 

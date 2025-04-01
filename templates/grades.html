@@ -3,7 +3,7 @@
     <header>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul class=flashes>
+                <ul class="welcome-message">
                 {% for message in messages %}
                     <li>{{ message }}</li>
                 {% endfor %}
@@ -15,83 +15,88 @@
         <h1>Student Grades</h1>
 
         <h2>Enter student grade to set or update:</h2>
-        <form action="{{ url_for('grades') }}" method="POST">
-            <label for="student_username_input">Student: </label>
-            <select id="student_username_input" name="students">
-                {% for Student in all_students %}
-                    <option value="{{ Student.username }}">{{ Student.username }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="student_assignment_selector">Assignment: </label>
-            <select id="student_assignment_selector" name="assignment">
-                <option value="Assignment 1">Assignment 1</option>
-                <option value="Assignment 2">Assignment 2</option>
-                <option value="Assignment 3">Assignment 3</option>
-                <option value="Midterm">Midterm</option>
-                <option value="Final">Final</option>
-            </select>
+        <div class="grades_search">
+            <form action="{{ url_for('grades') }}" method="POST">
+                <label for="student_username_input">Student: </label>
+                <select id="student_username_input" name="students">
+                    {% for Student in all_students %}
+                        <option value="{{ Student.username }}">{{ Student.username }}</option>
+                    {% endfor %}
+                </select>
     
-            <label for="student_grade_input">Grade: </label>
-            <input id="student_grade_input" name="grade" type="number">
-            <button type="submit">Submit</button>
-        </form>
-
+                <label for="student_assignment_selector">Assignment: </label>
+                <select id="student_assignment_selector" name="assignment">
+                    <option value="Assignment 1">Assignment 1</option>
+                    <option value="Assignment 2">Assignment 2</option>
+                    <option value="Assignment 3">Assignment 3</option>
+                    <option value="Midterm">Midterm</option>
+                    <option value="Final">Final</option>
+                </select>
+        
+                <label for="student_grade_input">Grade: </label>
+                <input id="student_grade_input" name="grade" type="number">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
         <div class="line"></div>
     {% endif%}
 
     <h1>Grades</h1>
     {% if all_grades %}
-        <table class="grades_table">
-            <tr>
-                <th>Student Username</th>
-                <th>Assignment</th>
-                <th>Grade</th>
-                <th>Remark Status</th>
-                {% if view_type == 'Instructor' %}
-                    <th>Reason</th>
-                {% endif %}
-            </tr>
-            {% for Grade in all_grades %}
+        <div class="wrapper">
+            <table class="grades_table">
                 <tr>
-                    <td>{{ Grade.username }}</td>
-                    <td>{{ Grade.assignment }}</td>
-                    <td>{{ Grade.grade }}</td>
-                    <td>{{ Grade.remark_status }}</td>
-                    {% if view_type == 'Student' %}
-                        <td>
-                            <button onclick="openForm(this)" class="remark-button">Remark Request</button>
-                            <form action="{{ url_for('remark') }}" method="POST" class="sub-form" style="display: none;">
-                                <label for="remark-reason">Reason:</label>
-                                <input type="text" name="remark-reason" required>
-                                <input type="hidden" name = "username" value="{{ Grade.username }}">
-                                <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
-                                <button type="submit">Submit Remark Request</button>
-                            </form>
-                        </td>
-                    {% else %}
-                        <td>{{ Grade.remark_reason }}</td>
-                        <td>
-                            <button onclick="editGrade(this)" class="remark-button">Edit</button>
-                            <form action="{{ url_for('editGrade') }}" method="POST" class="sub-form" style="display: none;">
-                                <label for="grade">Grade:</label>
-                                <input type="number" name = "grade" value="{{ Grade.grade }}" required>
-                                <input type="hidden" name = "username" value="{{ Grade.username }}">
-                                <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
-                                <input type="hidden" name = "reason" value="{{ Grade.remark_reason }}">
-                                <select id="status_selector" name="status">
-                                    <option value="Pending" selected="selected">Pending</option>
-                                    <option value="Approved">Approved</option>
-                                    <option value="Rejected">Rejected</option>
-                                </select>
-                                <button type="submit">Submit Remark Request</button>
-                            </form>
-                        </td>
+                    <th>Student Username</th>
+                    <th>Assignment</th>
+                    <th>Grade</th>
+                    <th>Remark Status</th>
+                    {% if view_type == 'Instructor' %}
+                        <th>Reason</th>
                     {% endif %}
                 </tr>
-            {% endfor %}
-        </table>
-
+                {% for Grade in all_grades %}
+                    <tr>
+                        <td>{{ Grade.username }}</td>
+                        <td>{{ Grade.assignment }}</td>
+                        <td>{{ Grade.grade }}</td>
+                        <td>{{ Grade.remark_status }}</td>
+                        {% if view_type == 'Student' %}
+                            <td class="grade_button">
+                                <button onclick="openForm(this)" class="remark-button">Remark Request</button>
+                                <form action="{{ url_for('remark') }}" method="POST" class="sub-form" style="display: none;">
+                                    <label for="remark-reason">Reason:</label>
+                                    <input type="text" name="remark-reason" required class="input_reason">
+                                    <input type="hidden" name = "username" value="{{ Grade.username }}">
+                                    <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
+                                    <button type="submit">Submit Remark Request</button>
+                                </form>
+                            </td>
+                        {% else %}
+                            <td>{{ Grade.remark_reason }}</td>
+                            <td class="grade_button">
+                                <button onclick="editGrade(this)" class="remark-button">Edit</button>
+                                <form action="{{ url_for('editGrade') }}" method="POST" class="sub-form" style="display: none;">
+                                    <label for="grade">Grade: </label>
+                                    <input type="number" name = "grade" value="{{ Grade.grade }}" required size="5">
+                                    <input type="hidden" name = "username" value="{{ Grade.username }}">
+                                    <input type="hidden" name = "assignment" value="{{ Grade.assignment }}">
+                                    <input type="hidden" name = "reason" value="{{ Grade.remark_reason }}">
+                                    <label for="stats">Status: </label>
+                                    <select id="status_selector" name="status">
+                                        <option value="Pending" selected="selected">Pending</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
     {% else %}
         <p>No grades have been submitted.</p>
     {% endif%}
